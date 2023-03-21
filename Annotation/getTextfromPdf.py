@@ -5,6 +5,7 @@
 from PyPDF2 import PdfReader
 from tqdm import tqdm
 import re
+from random import sample
 
 # It takes a pdf file as a string and creates a PdfReader object
 class pdfToAnnotation():
@@ -78,12 +79,19 @@ class pdfToAnnotation():
         :type toFile: bool (optional)
         :return: A list of words
         """
+        
+        if self.sentences == []:
+            print("No sentences found. So, splitting pages into sentences")
+            self.splitToSentences(toFile=toFile)
+            
         words = []
         print("Splitting sentences into words")
         for sentence in tqdm(self.sentences):
             for word in sentence.split():
                 words.append(word)
-            
+                
+        self.words = words
+        
         if toFile:
             self.writeToFile(words, "words.txt")
         
@@ -110,11 +118,60 @@ class pdfToAnnotation():
         :return: The sentences list is being returned.
         """
         return self.sentences
+    
+    def splitToMultipleFiles(self, annotaters:list, toWords : bool = True, sampleSize: int = 0):
+        """
+        It splits the words or sentences of the document into multiple files, each containing a sample
+        of the words or sentences
+        
+        :param annotaters: list of annotaters
+        :type annotaters: list
+        :param toWords: If True, the text is split into words. If False, the text is split into
+        sentences, defaults to True
+        :type toWords: bool (optional)
+        :param sampleSize: The number of words/sentences to be sampled from the file. If 0, then the
+        entire file is sampled, defaults to 0
+        :type sampleSize: int (optional)
+        """
+        if annotaters == []:
+            raise ValueError("The annotaters list is empty")
+        
+        if toWords:
+            if self.words == []:
+                print("No words found. So, splitting sentences into words")
+                self.splitToWords(toFile=False)
+            
+            splits = len(annotaters)
+            fileLength = len(self.words)
+            
+            toSplit = self.words
+            file_name = "words"
+        else:
+            if self.sentences == []:
+                print("No sentences found. So, splitting pages into sentences")
+                self.splitToSentences(toFile=False)
+            
+            splits = len(annotaters)
+            fileLength = len(self.sentences)
+        
+            toSplit = self.sentences
+            file_name = "sentences"
+            
+        if sampleSize == 0:
+            sampleSize = fileLength
+        
+        if sampleSize > fileLength:
+            raise ValueError(f"The sample size is larger than the number of words/sentences in the file. The sample size is {sampleSize} and the number of words/sentences in the file is {fileLength}")
+        
+        for s in range(splits):
+            # Splitting the words equally between the annotaters
+            self.writeToFile(sample(toSplit[s*fileLength//splits:(s+1)*fileLength//splits], sampleSize), f"{file_name}_{annotaters[s]}.txt")
+    
         
 if __name__ == "__main__":
     pdfString = "./Annotation/basiskemi-b.pdf"
     
     pdfAnnotation = pdfToAnnotation(pdfString)
     pdfAnnotation.slicePdf(7, 305)
-    pdfAnnotation.splitToSentences()
-    pdfAnnotation.splitToWords()
+    pdfAnnotation.splitToMultipleFiles(["Sebastian", "Erling", "Alexander"], sampleSize=10)
+    pdfAnnotation.splitToMultipleFiles(["Sebastian", "Erling", "Alexander"], toWords=False, sampleSize=10)
