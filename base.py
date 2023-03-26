@@ -2,7 +2,6 @@
 # https://colab.research.google.com/github/huggingface/notebooks/blob/master/examples/token_classification.ipynb#scrollTo=DDtsaJeVIrJT
 
 import numpy as np
-import pandas as pd
 import transformers
 from datasets import load_metric
 from transformers import (
