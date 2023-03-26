@@ -1,9 +1,6 @@
 import pandas as pd
 import codecs
-
-
-
-
+import pickle  as pickle
 
 data = []
 current_words = []
@@ -32,21 +29,28 @@ for line in codecs.open('data/baseline/en_ewt_nn_answers_test.conll', encoding='
 ## NAME CSV WHAT YOU WANT AND GIVE IT A PATH MABY??
 outF = open("baseline.txt", "w")
 
+
+## Load the model here
+model = pickle.load(open('model.pkl', 'rb'))
+
 for i in data:
     sent = i[0]
     label = i[1]
     
     ## Do some fancy predictioning here
     
+    predictions = model.argmax(sentance)
     
+    ## remapping 
     
+    predicted_token_class = [model.config.id2label[t.item()] for t in predictions[0]]
     
     ## pred = predictions made for each word in sent
     
     for index in range(len(sent)):
         
         ## HERE word[index] is the original word from the sentanve, and pred[index] is the predicted label for that
-        out = sent[index] + '\t' + label[index] 
+        out = sent[index] + '\t' + pred[index]
 
         # wrtie line to output file
         outF.write(out)
@@ -55,5 +59,3 @@ for i in data:
     out = '\t'
     outF.write(out)
     outF.write("\n")
-
-        
