@@ -86,4 +86,4 @@ def load_into_datasetdict(path_dict, features=CONLL_FEATURES):
 
         dataset_splits[key] = dataset
 
-    return datasets.DatasetDict(dataset_splits, features=features)
+    return datasets.DatasetDict(dataset_splits)
