@@ -1,6 +1,7 @@
 # Utility functions for the NER model.
+import datasets
 import pandas as pd
-from datasets import Dataset, datasets
+from datasets import Dataset
 
 
 def read_conll(path, nested=False):
