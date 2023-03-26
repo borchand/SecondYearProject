@@ -1,4 +1,7 @@
 # Utility functions for the NER model.
+import pandas as pd
+from datasets import Dataset, datasets
+
 
 def read_conll(path, nested=False):
     """Reads a CoNLL file and returns a list of sentences and their corresponding labels.
@@ -39,3 +42,47 @@ def read_conll(path, nested=False):
         return sents, labels, nested_labels
 
     return sents, labels
+
+
+CONLL_FEATURES = datasets.Features(
+    {
+        "id": datasets.Value("string"),
+        "tokens": datasets.Sequence(datasets.Value("string")),
+        "tags": datasets.Sequence(
+            datasets.features.ClassLabel(
+                names=[
+                    "O",
+                    "B-PER",
+                    "I-PER",
+                    "B-ORG",
+                    "I-ORG",
+                    "B-LOC",
+                    "I-LOC",
+                    "B-MISC",
+                    "I-MISC",
+                ]
+            )
+        ),
+    }
+)
+
+
+def convert_to_dataset(tokens, tags, features=CONLL_FEATURES):
+    df = pd.DataFrame({"tokens": tokens, "tags": tags})
+    df['id'] = df.reset_index().index
+    df = df[['id', 'tokens', 'tags']]
+    dataset = Dataset.from_pandas(df, features=features)
+
+    return dataset
+
+
+def load_into_datasetdict(path_dict, features=CONLL_FEATURES):
+    dataset_splits = dict()
+
+    for key, path in path_dict.items():
+        tokens, tags = read_conll(path)
+        dataset = convert_to_dataset(tokens, tags, features=features)
+
+        dataset_splits[key] = dataset
+
+    return datasets.DatasetDict(dataset_splits, features=features)
