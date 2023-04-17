@@ -14,7 +14,7 @@ from transformers import (
 
 from utils import load_into_datasetdict, tokenize_and_align_labels, compute_metrics
 
-class something():
+class TokenClassificationTrainer():
     def __init__(self, task, model_name, batch_size, label_all_tokens, file_paths):
         self.task = task
         self.model_name = model_name
@@ -110,11 +110,11 @@ if __name__ == "__main__":
         "test": "data/baseline/en_ewt_nn_answers_test.conll",
     }
 
-    s = something(task, model_name, batch_size, label_all_tokens, file_paths)
-    s.train_and_save()
+    tokenClassificationTrainer = TokenClassificationTrainer(task, model_name, batch_size, label_all_tokens, file_paths)
+    tokenClassificationTrainer.train_and_save()
 
-    print(s.evaluate())
+    print(tokenClassificationTrainer.evaluate())
 
     # load trianed model to trainer
-    s.set_trainer(use_old = True)
-    print(s.evaluate())
+    tokenClassificationTrainer.set_trainer(use_old = True)
+    print(tokenClassificationTrainer.evaluate())
