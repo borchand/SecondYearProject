@@ -1,8 +1,11 @@
 # Utility functions for the NER model.
+import re
+
 import datasets
+import numpy as np
 import pandas as pd
 from datasets import Dataset
-import numpy as np
+
 
 def read_conll(path, nested=False):
     """Reads a CoNLL file and returns a list of sentences and their corresponding labels.
@@ -70,7 +73,28 @@ CONLL_FEATURES = datasets.Features(
 
 
 def convert_to_dataset(tokens, tags, features=CONLL_FEATURES):
-    df = pd.DataFrame({"tokens": tokens, "tags": tags, "text": [' '.join(token) for token in tokens]})
+
+    text = []
+    for i, token in enumerate(tokens):
+        new = ""
+        for tok in token:
+            # Add a space before every token that is alphanumeric
+            if not (re.match(r"[^a-zA-Z0-9]+", tok) or tok=="n't"):
+                new += " "
+            
+
+            if re.match(r"([a-zA-Z]+)'([a-zA-Z]+)", tok):
+                if tok.lower() not in ["n't", "it's"]:
+                    
+                    tok = re.sub(r"([a-zA-Z]+)'([a-zA-Z]+)", r"\1\2", tok)
+
+                    print(tok)
+
+            new += tok
+        
+        text.append(new)
+
+    df = pd.DataFrame({"tokens": tokens, "tags": tags, "text": text})
     df['id'] = df.reset_index().index
     df = df[['id', 'tokens', 'tags', 'text']]
     dataset = Dataset.from_pandas(df, features=features)
@@ -89,37 +113,98 @@ def load_into_datasetdict(path_dict, features=CONLL_FEATURES):
 
     return datasets.DatasetDict(dataset_splits)
 
+
+def word_ids_xlm(token_ids, tokenizer):
+    """Returns the word ids for the given tokens using the XLM tokenizer.
+
+    Args:
+        tokens (list): List of tokens.
+        tokenizer (XLMTokenizer): XLM tokenizer.
+
+    Returns:
+        word_ids: List of word ids.
+    """
+    # Initialize the list of word ids
+    word_ids = []
+    idx = 0
+    prev_id = 0
+    for token in tokenizer.convert_ids_to_tokens(token_ids):
+        # If the token is start or end of sentence tag add None to word_ids
+        if token in ["<s>", "</s>"]:
+            word_ids.append(None)
+            continue
+        
+        if re.match(r"[^a-zA-Z0-9]</w>", token):
+            idx = prev_id
+            word_ids.append(idx)
+            continue
+
+        # Add word id for given wordpiece
+        word_ids.append(idx)
+        prev_id = idx
+        
+        # Catch cases where the wordpiece is a apostrophe
+        if token.startswith("'</w>"):
+            continue
+
+        # If wordpiece is end of word increment the word id
+        if token.endswith("</w>"):
+            idx += 1
+    
+    return word_ids
+
+
 # Function to tokenize and align the labels on a sub-word level
 def tokenize_and_align_labels(examples, tokenizer, label_all_tokens, fast):
 
-    tokenized_inputs = tokenizer(examples["text"])
-    # examples["text"]
-    # print(tokenized_inputs)
-    for text, ids in zip(examples["text"], tokenized_inputs["input_ids"]):
-        print(text)
-        print(tokenizer.convert_ids_to_tokens(ids))
-        print("\n")
+    if fast:
+        tokenized_inputs = tokenizer(examples["tokens"], truncation=True, is_split_into_words=True)
+    else:
+        tokenized_inputs = tokenizer(examples["text"])
+    
     labels = []
-    for i, label in enumerate(examples[f"tags"]):
-        if fast:
-            word_ids = tokenized_inputs.word_ids(batch_index=i)
-            previous_word_idx = None
-            label_ids = []
-            for word_idx in word_ids:
-                # Special tokens have a word id that is None. We set the label to -100 so they are automatically
-                # ignored in the loss function.
-                if word_idx is None:
-                    label_ids.append(-100)
-                # We set the label for the first token of each word.
-                elif word_idx != previous_word_idx:
-                    label_ids.append(label[word_idx])
-                # For the other tokens in a word, we set the label to either the current label or -100, depending on
-                # the label_all_tokens flag.
-                else:
-                    label_ids.append(label[word_idx] if label_all_tokens else -100)
-                previous_word_idx = word_idx
+    for i, label in enumerate(examples["tags"]):
 
-            labels.append(label_ids)
+        if fast:
+            # Word ids is only implemented for fast tokenizers
+            word_ids = tokenized_inputs.word_ids(batch_index=i)
+        else:
+            # Else we need to find the corresponding word ids manually
+            word_ids = word_ids_xlm(tokenized_inputs["input_ids"][i], tokenizer)
+            
+        # print(word_ids)
+        # print(tokenizer.convert_ids_to_tokens(tokenized_inputs["input_ids"][i]))
+        # print(len(label), label)
+        # print(examples["text"][i])
+        # print()
+
+        
+        previous_word_idx = None
+        label_ids = []
+        for word_idx in word_ids:
+            # Special tokens have a word id that is None. We set the label to -100 so they are automatically
+            # ignored in the loss function.
+            if word_idx is None:
+                label_ids.append(-100)
+            # We set the label for the first token of each word.
+            elif word_idx != previous_word_idx:
+                try:
+                    label_ids.append(label[word_idx])
+                except:
+                    # print(word_ids)
+                    # print(tokenizer.convert_ids_to_tokens(tokenized_inputs["input_ids"][i]))
+                    # print(examples["text"][i])
+                    # print(word_idx)
+                    # print(len(label), label)
+                    raise TypeError
+            # For the other tokens in a word, we set the label to either the current label or -100, depending on
+            # the label_all_tokens flag.
+            else:
+                label_ids.append(label[word_idx] if label_all_tokens else -100)
+            previous_word_idx = word_idx
+
+        labels.append(label_ids)
+
 
     tokenized_inputs["labels"] = labels
     return tokenized_inputs
