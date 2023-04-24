@@ -34,6 +34,10 @@ def read_conll(path, nested=False):
             if line != "":
                 line = line.split("\t")
                 text.append(line[0])
+                if 'deriv' in line[1]:
+                    line[1] = line[1].replace('deriv', '')
+                if 'part' in line[1]:
+                    line[1] = line[1].replace('part', '')
                 label.append(line[1])
                 if nested:
                     nested_label.append(line[2])
