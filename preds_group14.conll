@@ -17,9 +17,9 @@ White	O
 Tea	O
 ?	O
 
-Green	O
+Green	B-PER
 
-Green	B-ORG
+Green	O
 Tea	O
 .	O
 
@@ -29,7 +29,7 @@ tea	O
 What	O
 is	O
 this	O
-Miramar	B-PER
+Miramar	B-MISC
 ?	O
 
 It	O
@@ -63,7 +63,7 @@ any	O
 good	O
 food	O
 in	O
-iguazu	O
+iguazu	B-LOC
 ?	O
 
 Not	O
@@ -117,8 +117,8 @@ link	O
 for	O
 Red	B-ORG
 FM	I-ORG
-93.5	I-MISC
-delhi	I-LOC
+93.5	O
+delhi	B-LOC
 ?	O
 
 any	O
@@ -205,9 +205,9 @@ below	O
 
 E-mail	O
 :	O
-memberservices@worldresortsinternational.com	O
+memberservices@worldresortsinternational.com	B-PER
 
-m	O
+m	B-PER
 
 Who	O
 is	O
@@ -233,8 +233,8 @@ cost	O
 to	O
 buy	O
 a	O
-Big	B-MISC
-Mac	I-MISC
+Big	O
+Mac	O
 meal	O
 in	O
 your	O
@@ -249,10 +249,10 @@ think	O
 it	O
 's	O
 like	O
-$	O
+$	B-MISC
 3	O
 or	O
-$	O
+$	B-MISC
 4	O
 for	O
 a	O
@@ -320,7 +320,7 @@ Pharmacy	I-ORG
 ,	O
 Karol	B-PER
 Bag	I-PER
-.	I-PER
+.	O
 
 kindly	O
 contact	O
@@ -392,7 +392,7 @@ You	O
 'd	O
 need	O
 their	O
-Apple	B-ORG
+Apple	B-MISC
 ID	O
 and	O
 password	O
@@ -407,7 +407,7 @@ you	O
 can	O
 track	O
 any	O
-iPhone	B-LOC
+iPhone	B-MISC
 .	O
 
 Besides	O
@@ -447,7 +447,7 @@ Well	O
 they	O
 play	O
 the	O
-Wii	B-ORG
+Wii	B-MISC
 like	O
 me	O
 :)	O
@@ -604,10 +604,10 @@ looking	O
 for	O
 websites	O
 like	O
-flickr.com	O
-tumblr.com	O
+flickr.com	B-MISC
+tumblr.com	B-MISC
 and	O
-autocorrects.com	O
+autocorrects.com	B-MISC
 but	O
 ones	O
 that	O
@@ -640,7 +640,7 @@ Thank	O
 you	O
 (:	O
 
-Ifunny.com	B-ORG
+Ifunny.com	B-PER
 
 how	O
 do	O
@@ -809,14 +809,14 @@ gps	O
 Yes	O
 .	O
 
-mazzoni	O
-'s	O
+mazzoni	B-ORG
+'s	I-ORG
 deli	O
 best	O
 italian	B-LOC
 food	O
 in	O
-phila	O
+phila	B-LOC
 pa	O
 ?	O
 
@@ -826,10 +826,10 @@ mazzoni	B-PER
 deli	O
 at	O
 3901	O
-conshocken	O
+conshocken	B-ORG
 ave	O
 in	O
-phila	O
+phila	B-LOC
 pa	O
 really	O
 the	O
@@ -857,13 +857,13 @@ I	O
 will	O
 travel	O
 from	O
-maryland	O
+maryland	B-LOC
 if	O
 that	O
 s	O
 true	O
 
-yep	O
+yep	B-PER
 
 Dinner	O
 and	O
@@ -922,7 +922,7 @@ be	O
 appreciated	O
 .	O
 
-Rumba	B-LOC
+Rumba	O
 Room	O
 
 Courage	O
@@ -935,12 +935,12 @@ In	O
 the	O
 Episode	O
 "	O
-So	O
+So	B-MISC
 in	O
 Louvre	B-LOC
-Are	O
-We	O
-Two	O
+Are	I-MISC
+We	I-MISC
+Two	I-MISC
 "	O
 ,	O
 How	O
@@ -1000,17 +1000,17 @@ a	O
 stick	O
 ?	O
 
-Cotton	B-ORG
+Cotton	O
 Candy	O
 
-Corn	B-LOC
-Dog	I-MISC
+Corn	O
+Dog	O
 
-Candy	B-PER
+Candy	O
 Apple	O
 
 Meat	B-PER
-Kabob	I-PER
+Kabob	O
 
 Ship	B-MISC
 on	I-MISC
@@ -1121,7 +1121,7 @@ no	O
 clue	O
 what	O
 "	O
-Iguazu	B-PER
+Iguazu	B-LOC
 "	O
 is	O
 ...	O
@@ -1138,7 +1138,7 @@ France	I-ORG
 I	O
 love	O
 Air	B-ORG
-France	B-ORG
+France	I-ORG
 !	O
 
 Their	O
@@ -1274,7 +1274,7 @@ preorder	O
 a	O
 game	O
 at	O
-gamestop	O
+gamestop	B-MISC
 can	O
 someone	O
 else	O
@@ -1287,7 +1287,7 @@ me	O
 
 i	O
 put	O
-$	O
+$	B-MISC
 5	O
 bucks	O
 down	O
@@ -1304,7 +1304,7 @@ be	O
 able	O
 to	O
 some	O
-gamestops	O
+gamestops	B-MISC
 do	O
 nt	O
 check	O
@@ -1447,7 +1447,7 @@ looking	O
 .	O
 
 Prosperity	O
-POS	B-ORG
+POS	O
 makes	O
 the	O
 best	O
@@ -1510,7 +1510,7 @@ been	O
 looking	O
 at	O
 the	O
-bose	O
+bose	B-LOC
 sound	O
 dock	O
 10	O
@@ -1519,7 +1519,7 @@ ve	O
 currently	O
 got	O
 a	O
-jvc	O
+jvc	B-MISC
 mini	O
 hifi	O
 system	O
@@ -1575,7 +1575,7 @@ B	O
 w	O
 .	O
 
-Bose	B-PER
+Bose	B-ORG
 is	O
 not	O
 good	O
@@ -1591,11 +1591,11 @@ NZ	B-LOC
 I	O
 have	O
 ordered	O
-Bose	B-ORG
-Headfones	O
+Bose	B-MISC
+Headfones	I-MISC
 worth	O
 300	O
-USD	O
+USD	B-MISC
 .	O
 
 They	O
@@ -1604,10 +1604,10 @@ been	O
 shipped	O
 using	O
 USPS	B-ORG
-Priority	I-ORG
-Mail	I-ORG
-International	I-ORG
-Parcels	I-ORG
+Priority	O
+Mail	O
+International	O
+Parcels	O
 .	O
 
 will	O
@@ -1678,12 +1678,12 @@ by	O
 Well	O
 there	O
 s	O
-Mc.	B-PER
-Donald	I-PER
-s	I-PER
+Mc.	B-ORG
+Donald	I-ORG
+s	I-ORG
 ,	O
-Taco	B-PER
-Bell	I-PER
+Taco	B-ORG
+Bell	I-ORG
 ,	O
 Burger	B-ORG
 King	I-ORG
@@ -1724,13 +1724,13 @@ Nearby	O
 what	O
 ?	O
 
-Loop	O
+Loop	B-LOC
 ,	O
-North	O
-Side	O
+North	B-LOC
+Side	I-LOC
 ,	O
-South	O
-Side	O
+South	B-LOC
+Side	I-LOC
 ,	O
 near	O
 suburbs	O
@@ -1809,7 +1809,7 @@ and	O
 no	O
 
 Maybe	O
-Labour	B-ORG
+Labour	O
 .	O
 
 John	B-PER
@@ -1837,7 +1837,7 @@ I	O
 have	O
 usually	O
 voted	O
-National	B-LOC
+National	B-ORG
 .	O
 
 I	O
@@ -2125,7 +2125,7 @@ royal	O
 caribbean	O
 ,	O
 and	O
-norweigan	O
+norweigan	B-LOC
 (	O
 cruises	O
 )	O
@@ -2158,8 +2158,8 @@ onboard	O
 
 The	O
 new	O
-NCL	B-ORG
-Epic	I-ORG
+NCL	B-MISC
+Epic	I-MISC
 does	O
 sound	O
 amazing	O
@@ -2233,15 +2233,15 @@ turned	O
 off	O
 ?	O
 
-Mine	B-PER
+Mine	O
 does	O
 .	O
 
 I	O
 have	O
 the	O
-HTC	B-ORG
-Evo	B-ORG
+HTC	B-MISC
+Evo	I-MISC
 .	O
 
 depends	O
@@ -2382,13 +2382,13 @@ slogan	O
 .	O
 
 A	B-MISC
-Look	O
-at	O
+Look	I-MISC
+at	I-MISC
 Slogans	I-MISC
 -	O
 http://www.small-business-software.net/look-at-slogans.htm	B-MISC
 
-Unique	B-MISC
+Unique	O
 Selling	O
 Proposition	O
 -	O
@@ -2520,7 +2520,7 @@ postor	O
 usint	O
 the	O
 word	O
-MAD	B-ORG
+MAD	O
 on	O
 a	O
 white	O
@@ -2537,7 +2537,7 @@ The	O
 actual	O
 word	O
 "	O
-MAD	B-PER
+MAD	O
 "	O
 has	O
 to	O
@@ -2552,7 +2552,7 @@ the	O
 image	O
 .	O
 
-MAD	B-PER
+MAD	O
 means	O
 crazy	O
 ,	O
@@ -2600,7 +2600,7 @@ photoshop	O
 .	O
 
 tttthhhhh	O
-Madonna	B-PER
+Madonna	B-ORG
 !	O
 
 what	O
@@ -2644,8 +2644,8 @@ at	O
 the	O
 end	O
 of	O
-WW	O
-II	O
+WW	B-MISC
+II	I-MISC
 the	O
 Viet	B-ORG
 Minh	I-ORG
@@ -2690,9 +2690,9 @@ to	O
 check	O
 out	O
 the	O
-French	B-LOC
-Indochina	I-LOC
-War	I-LOC
+French	B-MISC
+Indochina	I-MISC
+War	I-MISC
 (	O
 1946	O
 -	O
@@ -2700,8 +2700,8 @@ War	I-LOC
 )	O
 not	O
 the	O
-Vietnam	B-LOC
-War	I-LOC
+Vietnam	B-MISC
+War	I-MISC
 (	O
 1957	O
 -	O
@@ -2734,7 +2734,7 @@ are	O
 talking	O
 about	O
 a	O
-pacman	B-LOC
+pacman	O
 frog	O
 .	O
 
@@ -2770,7 +2770,7 @@ one	O
 .	O
 
 A	O
-pacman	B-LOC
+pacman	O
 frog	O
 will	O
 need	O
@@ -2824,7 +2824,7 @@ romantic	O
 cheap	O
 date	O
 night	O
-san	O
+san	B-LOC
 francisco	B-LOC
 ?	O
 
@@ -2931,7 +2931,7 @@ restaurants	O
 .	O
 
 Try	O
-SanFranGuide.com	B-ORG
+SanFranGuide.com	B-MISC
 
 my	O
 lhasa	O
@@ -3059,7 +3059,7 @@ and	O
 three	O
 friends	O
 to	O
-Andiamo	B-PER
+Andiamo	B-ORG
 s	I-ORG
 restaurant	O
 for	O
@@ -3144,7 +3144,7 @@ is	O
 Best	O
 count	O
 on	O
-$	O
+$	B-MISC
 50	O
 per	O
 person	O
@@ -3213,8 +3213,8 @@ for	O
 American	B-LOC
 Food	O
 ,	O
-Soul	B-ORG
-Food	I-ORG
+Soul	O
+Food	O
 ,	O
 Mexican	B-LOC
 ,	O
@@ -3252,8 +3252,8 @@ budget	O
 ,	O
 i	O
 recommend	O
-Hakka	B-LOC
-Restaurant	O
+Hakka	B-ORG
+Restaurant	I-ORG
 for	O
 chinese	B-LOC
 food	O
@@ -3279,8 +3279,8 @@ s	O
 super	O
 expensive	O
 
-try	B-ORG
-yelp.com	B-ORG
+try	B-MISC
+yelp.com	I-ORG
 
 how	O
 many	O
@@ -3475,16 +3475,16 @@ have	O
 a	O
 look	O
 at	O
-General	B-PER
-Fiasco	I-PER
+General	B-ORG
+Fiasco	I-ORG
 ,	O
 Two	B-ORG
 Door	I-ORG
 Cinema	I-ORG
 Club	I-ORG
 and	O
-Wallis	B-PER
-Bird	I-PER
+Wallis	B-ORG
+Bird	I-ORG
 .	O
 
 I	O
@@ -3506,7 +3506,7 @@ answer	O
 in	O
 the	O
 "	O
-TRAVEL	B-ORG
+TRAVEL	O
 "	O
 section	O
 .	O
@@ -3644,7 +3644,7 @@ to	O
 Look	O
 on	O
 the	O
-debenhams	B-PER
+debenhams	B-ORG
 website	O
 
 in	O
@@ -3671,17 +3671,17 @@ I	O
 have	O
 a	O
 Kodak	B-ORG
-Camera	O
+Camera	I-MISC
 (	O
 10.2	O
 Megapixels	O
 )	O
 ...	O
-Kodak	B-ORG
+Kodak	B-MISC
 AF	I-MISC
-5x	O
-OPTICAL	O
-LENS	O
+5x	I-MISC
+OPTICAL	I-MISC
+LENS	I-MISC
 ...	O
 how	O
 do	O
@@ -3696,17 +3696,17 @@ I	O
 have	O
 a	O
 Kodak	B-ORG
-Camera	O
+Camera	I-MISC
 (	O
 10.2	O
 Megapixels	O
 )	O
 ...	O
-Kodak	B-ORG
+Kodak	B-MISC
 AF	I-MISC
-5x	O
-OPTICAL	O
-LENS	O
+5x	I-MISC
+OPTICAL	I-MISC
+LENS	I-MISC
 ...	O
 how	O
 do	O
@@ -3805,7 +3805,7 @@ software	O
 I	O
 have	O
 a	O
-Nacho	B-ORG
+Nacho	B-MISC
 Libre	I-MISC
 question	O
 .?	O
@@ -3904,8 +3904,8 @@ Mexico	B-LOC
 ,	O
 in	O
 the	O
-Dining	B-MISC
-Out	I-MISC
+Dining	O
+Out	O
 in	O
 Argentina	B-LOC
 category	O
@@ -3963,7 +3963,7 @@ sundae	O
 from	O
 in	O
 Invercargill	B-LOC
-New	I-LOC
+New	B-LOC
 Zealand	I-LOC
 ?	O
 
@@ -3995,10 +3995,10 @@ sundae	O
 from	O
 other	O
 than	O
-mc	B-PER
-donald	I-PER
-s	I-PER
-lol	I-PER
+mc	B-ORG
+donald	I-ORG
+s	I-ORG
+lol	I-ORG
 
 Fast	O
 food	O
@@ -4015,8 +4015,8 @@ NZ	B-LOC
 and	O
 you	O
 eat	O
-McDonald	B-PER
-s	O
+McDonald	B-ORG
+s	I-ORG
 ice	O
 cream	O
 ?	O
@@ -4112,17 +4112,17 @@ chain	O
 in	O
 the	O
 chicago	B-LOC
-metro	I-LOC
+metro	O
 area	O
 like	O
 for	O
 example	O
 burger	O
 king	O
-portillo	B-PER
-s	I-PER
-white	O
-castle	O
+portillo	B-LOC
+s	I-LOC
+white	I-LOC
+castle	I-LOC
 which	O
 one	O
 do	O
@@ -4131,8 +4131,8 @@ the	O
 best	O
 ?	O
 
-Red	B-ORG
-Robin	I-ORG
+Red	O
+Robin	O
 .	O
 
 Onion	O
@@ -4150,7 +4150,7 @@ Fudrucker	O
 s	O
 .	O
 
-idk	B-ORG
+idk	B-PER
 ur	O
 choice	O
 
@@ -4164,8 +4164,8 @@ a	O
 chain	O
 ?	O
 
-Hackney	B-PER
-'s	I-PER
+Hackney	B-ORG
+'s	I-ORG
 has	O
 a	O
 great	O
@@ -4194,19 +4194,19 @@ spot	O
 for	O
 a	O
 real	O
-Hackney	B-LOC
+Hackney	B-ORG
 's	I-ORG
 is	O
-Printers	B-LOC
-'	I-LOC
-Row	I-LOC
+Printers	B-ORG
+'	I-ORG
+Row	I-ORG
 :	O
 
 http://www.hackneysprintersrow.net/	B-MISC
 
 See	O
 what	O
-DD	B-ORG
+DD	B-PER
 &	I-ORG
 D	I-ORG
 showed	O
@@ -4325,7 +4325,7 @@ dog	O
 to	O
 the	O
 vet	O
-ASAP	B-PER
+ASAP	O
 !!!	O
 
 esp	O
@@ -4485,7 +4485,7 @@ different	O
 generations	O
 ,	O
 the	O
-donatello	O
+donatello	B-PER
 is	O
 of	O
 a	O
@@ -4567,7 +4567,7 @@ on	O
 Name	O
 of	O
 specific	O
-Hibachi	B-PER
+Hibachi	B-ORG
 restaurant	O
 in	O
 Chicago	B-LOC
@@ -4666,7 +4666,7 @@ a	O
 large	O
 square	O
 open	O
-hibachi	B-LOC
+hibachi	O
 cook	O
 your	O
 food	O
@@ -4718,9 +4718,9 @@ help	O
 
 That	O
 is	O
-Flat	O
-Top	O
-Grill	O
+Flat	B-ORG
+Top	I-ORG
+Grill	I-ORG
 
 What	O
 's	O
@@ -4887,14 +4887,14 @@ time	O
 .	O
 
 canon	O
-t2i	B-PER
+t2i	B-MISC
 stops	O
 working	O
 ?	O
 
 My	O
-canon	O
-t2i	B-MISC
+canon	B-MISC
+t2i	I-MISC
 stops	O
 working	O
 at	O
@@ -4995,7 +4995,7 @@ agree	O
 I	O
 shoot	O
 a	O
-t1i	O
+t1i	B-MISC
 and	O
 have	O
 n't	O
@@ -5090,10 +5090,10 @@ starting	O
 from	O
 Raleigh	B-LOC
 ,	O
-NC	I-LOC
+NC	B-LOC
 (	O
 RDU	B-ORG
-Airport	I-LOC
+Airport	I-ORG
 )	O
 .	O
 
@@ -5128,9 +5128,9 @@ holidays	O
 .	O
 
 Use	O
-Travelocity	O
+Travelocity	B-MISC
 or	O
-Expedia	B-ORG
+Expedia	B-MISC
 and	O
 see	O
 what	O
@@ -5145,7 +5145,7 @@ friend	O
 goes	O
 to	O
 the	O
-Phils	B-LOC
+Phils	B-ORG
 every	O
 6	O
 months	O
@@ -5213,8 +5213,8 @@ states	O
 I	O
 used	O
 "	O
-Fly	O
-genesis	O
+Fly	B-MISC
+genesis	I-ORG
 "	O
 based	O
 in	O
@@ -5459,7 +5459,7 @@ system	O
 or	O
 the	O
 "	O
-L	B-ORG
+L	O
 "	O
 system	O
 is	O
@@ -5707,13 +5707,13 @@ fish	O
 fire	O
 mouth	O
 honey	O
-Gouramis	B-PER
+Gouramis	O
 5	O
 8	O
 inch	O
 clownloach	O
 a	O
-Krib	B-PER
+Krib	O
 and	O
 5	O
 1	O
@@ -5726,7 +5726,7 @@ cory	O
 cats	O
 5	O
 Australian	B-LOC
-Rainbows	B-LOC
+Rainbows	O
 
 If	O
 you	O
