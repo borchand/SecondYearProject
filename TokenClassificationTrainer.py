@@ -28,7 +28,7 @@ class TokenClassificationTrainer():
         self.label_list = self.datasets["train"].features["tags"].feature.names
 
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-        print(type(self.tokenizer))
+
         # Initialize the tokenizer and model 
         if "xlm" in self.model_name:
             self.fast = False
@@ -55,7 +55,7 @@ class TokenClassificationTrainer():
             per_device_eval_batch_size=self.batch_size,
             num_train_epochs=num_train_epochs,
             weight_decay=weight_decay,
-            use_mps_device=True
+            use_mps_device=False
         )
 
         # Pad the labels to the maximum length of the sequences in the examples given
@@ -67,7 +67,6 @@ class TokenClassificationTrainer():
         example = self.tokenized_datasets["train"][17]
 
         labels = [self.label_list[i] for i in example[f"tags"]]
-        print(metric.compute(predictions=[labels], references=[labels]))
 
         self.trainer = Trainer(
             self.model,
@@ -105,16 +104,16 @@ if __name__ == "__main__":
     # Set the task and name of the pretrained model and the batch size for finetuning
     task = "ner"
     model_name = "xlm-mlm-17-1280"  # "bert-base-multilingual-cased" or "xlm-mlm-17-1280"
-    batch_size = 32
+    batch_size = 16
 
     # Flag to indicate whether to label all tokens or just the first token of each word
     label_all_tokens = True
 
     # File paths to splits of the chosen dataset
     file_paths = {
-        "train": "data/datasets/baseline/en_ewt_nn_email_dev.conll",
-        "validation": "data/datasets/baseline/en_ewt_nn_answers_dev.conll",
-        "test": "data/datasets/baseline/en_ewt_nn_answers_test.conll",
+        "train": "data/datasets/baseline/en_ewt_nn_train.conll",
+        "validation": "data/datasets/baseline/en_ewt_nn_newsgroup_dev.conll",
+        "test": "data/datasets/baseline/en_ewt_nn_newsgroup_test.conll",
     }
 
     tokenClassificationTrainer = TokenClassificationTrainer(task, model_name, batch_size, label_all_tokens, file_paths)

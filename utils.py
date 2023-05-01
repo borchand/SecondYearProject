@@ -92,8 +92,6 @@ def convert_to_dataset(tokens, tags, features=CONLL_FEATURES):
                     
                     tok = re.sub(r"([a-zA-Z]+)'([a-zA-Z]+)", r"\1\2", tok)
 
-                    print(tok)
-
             new += tok
         
         text.append(new)
@@ -138,7 +136,7 @@ def word_ids_xlm(token_ids, tokenizer):
             word_ids.append(None)
             continue
         
-        if re.match(r"[^a-zA-Z0-9]</w>", token):
+        if re.match(r"[^a-zA-Z0-9]+</w>", token):
             idx = prev_id
             word_ids.append(idx)
             continue
@@ -175,12 +173,6 @@ def tokenize_and_align_labels(examples, tokenizer, label_all_tokens, fast):
         else:
             # Else we need to find the corresponding word ids manually
             word_ids = word_ids_xlm(tokenized_inputs["input_ids"][i], tokenizer)
-            
-        # print(word_ids)
-        # print(tokenizer.convert_ids_to_tokens(tokenized_inputs["input_ids"][i]))
-        # print(len(label), label)
-        # print(examples["text"][i])
-        # print()
 
         
         previous_word_idx = None
@@ -195,12 +187,12 @@ def tokenize_and_align_labels(examples, tokenizer, label_all_tokens, fast):
                 try:
                     label_ids.append(label[word_idx])
                 except:
-                    # print(word_ids)
-                    # print(tokenizer.convert_ids_to_tokens(tokenized_inputs["input_ids"][i]))
-                    # print(examples["text"][i])
-                    # print(word_idx)
-                    # print(len(label), label)
-                    raise TypeError
+                    print(word_ids)
+                    print(tokenizer.convert_ids_to_tokens(tokenized_inputs["input_ids"][i]))
+                    print(examples["text"][i])
+                    print(word_idx)
+                    print(len(label), label)
+                    raise NotImplementedError
             # For the other tokens in a word, we set the label to either the current label or -100, depending on
             # the label_all_tokens flag.
             else:
