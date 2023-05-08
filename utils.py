@@ -23,7 +23,7 @@ def read_conll(path, nested=False):
         nested_labels = []
 
     # Check if the file is part of NoSta dataset
-    NoSta = True if "NER-de" in path else False
+    NoSta = True if "NER-de" or "da_" in path else False
 
     with open(path, 'r') as f:
         raw_sents = f.read().split("\n\n")
@@ -225,6 +225,22 @@ def tokenize_and_align_labels(examples, tokenizer, label_all_tokens, fast):
     tokenized_inputs["labels"] = labels
     return tokenized_inputs
 
+# based on:
+# https://github.itu.dk/robv/intro-nlp2023/blob/main/assignments/project/span_f1.py
+
+def toSpans(tags):
+    spans = set()
+    for beg in range(len(tags)):
+        if tags[beg][0] == 'B':
+            end = beg
+            for end in range(beg+1, len(tags)):
+                if tags[beg][0] != 'I':
+                    break
+            spans.add(str(beg) + '-' + str(end) + ':' + tags[beg][2:])
+    return spans
+
+# based on:
+# https://github.itu.dk/robv/intro-nlp2023/blob/main/assignments/project/span_f1.py
 def compute_metrics(p, label_list, metric):
     predictions, labels = p
     predictions = np.argmax(predictions, axis=2)
@@ -240,10 +256,31 @@ def compute_metrics(p, label_list, metric):
     ]
 
     results = metric.compute(predictions=true_predictions, references=true_labels)
+
+    tp = 0
+    fp = 0
+    fn = 0
+
+    for goldEnt, predEnt in zip(true_labels, true_predictions):
+        goldSpans = toSpans(goldEnt)
+        predSpans = toSpans(predEnt)
+
+        overlap = len(goldSpans.intersection(predSpans))
+        tp += overlap
+        fp += len(predSpans) - overlap
+        fn += len(goldSpans) - overlap
+        
+    prec = 0.0 if tp+fp == 0 else tp/(tp+fp)
+    rec = 0.0 if tp+fn == 0 else tp/(tp+fn)
+    span_f1 = 0.0 if prec+rec == 0.0 else 2 * (prec * rec) / (prec + rec)
+
+    results["overall_span_f1"] = span_f1
+    
     return {
         "precision": results["overall_precision"],
         "recall": results["overall_recall"],
         "f1": results["overall_f1"],
+        "span_f1": results["overall_span_f1"],
         "accuracy": results["overall_accuracy"],
     }
 
