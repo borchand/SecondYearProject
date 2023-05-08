@@ -22,6 +22,9 @@ def read_conll(path, nested=False):
     if nested:
         nested_labels = []
 
+    # Check if the file is part of NoSta dataset
+    NoSta = True if "NER-de" in path else False
+
     with open(path, 'r') as f:
         raw_sents = f.read().split("\n\n")
     
@@ -33,11 +36,28 @@ def read_conll(path, nested=False):
         for line in raw_sent.split("\n"):
             if line != "":
                 line = line.split("\t")
+                
+                # Custom handling of NoSta dataset format
+                if NoSta:
+                    # Skip metadata lines
+                    if line[0] == '#':
+                        continue
+                    # Remove line numbering
+                    line = line[1:]
+                    # Change OTH labels to MISC
+                    if 'OTH' in line[1]:
+                        line[1] = line[1].replace('OTH', 'MISC')
+
+                # Add word to text
                 text.append(line[0])
+
+                # Remove deriv and part from labels
                 if 'deriv' in line[1]:
                     line[1] = line[1].replace('deriv', '')
                 if 'part' in line[1]:
                     line[1] = line[1].replace('part', '')
+
+                # Add label to label list
                 label.append(line[1])
                 if nested:
                     nested_label.append(line[2])
@@ -226,3 +246,22 @@ def compute_metrics(p, label_list, metric):
         "f1": results["overall_f1"],
         "accuracy": results["overall_accuracy"],
     }
+
+
+if __name__ == '__main__':
+    path_dict = {
+        "train": "data/datasets/DaNplus/da_news_test.tsv",
+        "valid": "data/datasets/DaNplus/de_news_train.tsv",
+        "test": "data/datasets/NoSta-D/NER-de-test.tsv",
+    }
+
+    text, tags = read_conll(path_dict["test"])
+    
+    set_tags = set()
+    for tag_set in tags:
+        set_tags.update(tag_set)
+
+    for i in range(len(text[0])):
+        print(text[0][i], tags[0][i])
+
+    print(set_tags)
