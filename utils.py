@@ -23,7 +23,7 @@ def read_conll(path, nested=False):
         nested_labels = []
 
     # Check if the file is part of NoSta dataset
-    NoSta = True if "NER-de" or "da_" in path else False
+    NoSta = True if "NER-de" in path else False
 
     with open(path, 'r') as f:
         raw_sents = f.read().split("\n\n")
@@ -288,17 +288,20 @@ def compute_metrics(p, label_list, metric):
 if __name__ == '__main__':
     path_dict = {
         "train": "data/datasets/DaNplus/da_news_test.tsv",
-        "valid": "data/datasets/DaNplus/de_news_train.tsv",
+        "valid": "data/datasets/baseline/en_ewt_nn_train.conll",
         "test": "data/datasets/NoSta-D/NER-de-test.tsv",
     }
 
-    text, tags = read_conll(path_dict["test"])
-    
-    set_tags = set()
-    for tag_set in tags:
-        set_tags.update(tag_set)
 
-    for i in range(len(text[0])):
-        print(text[0][i], tags[0][i])
+    for thing in ["train", "valid", "test"]:
+        text, tags = read_conll(path_dict[thing])
+        
+        set_tags = set()
+        for tag_set in tags:
+            set_tags.update(tag_set)
 
-    print(set_tags)
+        for i in range(len(text[0])):
+            print(text[0][i], tags[0][i])
+
+        print(set_tags)
+        print()
