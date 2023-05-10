@@ -96,7 +96,9 @@ class TokenClassificationTrainer():
 
         return self.trainer
     
-    def evaluate(self):
+    def evaluate(self, eval_dataset = None):
+        if eval_dataset:
+            return self.trainer.evaluate(eval_dataset=eval_dataset)
         return self.trainer.evaluate()
 
 
@@ -117,9 +119,6 @@ if __name__ == "__main__":
     }
 
     tokenClassificationTrainer = TokenClassificationTrainer(task, model_name, batch_size, label_all_tokens, file_paths)
-    tokenClassificationTrainer.train_and_save()
-
-    print(tokenClassificationTrainer.evaluate())
 
     # load trianed model to trainer
     tokenClassificationTrainer.set_trainer(use_old = True)
