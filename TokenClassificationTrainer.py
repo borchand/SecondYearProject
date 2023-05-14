@@ -9,6 +9,7 @@ from transformers import (
     DataCollatorForTokenClassification,
     Trainer,
     TrainingArguments,
+    EarlyStoppingCallback,
 )
 
 from utils import compute_metrics, load_into_datasetdict, tokenize_and_align_labels
@@ -40,7 +41,7 @@ class TokenClassificationTrainer():
         # Tokenize and align the labels on a sub-word level for all datasets
         self.tokenized_datasets = self.datasets.map(lambda examples: tokenize_and_align_labels(examples=examples, tokenizer=self.tokenizer, label_all_tokens=self.label_all_tokens, fast=self.fast), batched=True)
 
-    def set_trainer(self, use_old = False, learning_rate=2e-5, num_train_epochs = 3, weight_decay = 0.01):
+    def set_trainer(self, use_old = False, learning_rate=2e-5, num_train_epochs = 100, weight_decay = 0.01):
         if use_old:
             self.old_model()
         else: 
@@ -50,12 +51,14 @@ class TokenClassificationTrainer():
         args = TrainingArguments(
             f"{self.model_name}-finetuned-{self.task}",
             evaluation_strategy = "epoch",
+            save_strategy = "epoch",
             learning_rate=learning_rate,
             per_device_train_batch_size=self.batch_size,
             per_device_eval_batch_size=self.batch_size,
             num_train_epochs=num_train_epochs,
             weight_decay=weight_decay,
-            use_mps_device=False
+            use_mps_device=False,
+            load_best_model_at_end = True
         )
 
         # Pad the labels to the maximum length of the sequences in the examples given
@@ -75,7 +78,8 @@ class TokenClassificationTrainer():
             eval_dataset=self.tokenized_datasets["validation"],
             data_collator=data_collator,
             tokenizer=self.tokenizer,
-            compute_metrics=lambda p: compute_metrics(p=p, label_list=self.label_list, metric=metric)
+            compute_metrics=lambda p: compute_metrics(p=p, label_list=self.label_list, metric=metric),
+            callbacks=[EarlyStoppingCallback(early_stopping_patience=3)],
         )
 
         return self.trainer
@@ -106,7 +110,7 @@ if __name__ == "__main__":
     # Set the task and name of the pretrained model and the batch size for finetuning
     task = "ner"
     model_name = "xlm-mlm-17-1280"  # "bert-base-multilingual-cased" or "xlm-mlm-17-1280"
-    batch_size = 16
+    batch_size = 32
 
     # Flag to indicate whether to label all tokens or just the first token of each word
     label_all_tokens = True
