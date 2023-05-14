@@ -20,6 +20,7 @@ frozenlist==1.3.3
 fsspec==2023.3.0
 huggingface-hub==0.13.3
 idna==3.4
+importlib-metadata==6.1.0
 ipykernel==6.22.0
 ipython==8.12.0
 jedi==0.18.2
@@ -43,6 +44,7 @@ pickleshare==0.7.5
 Pillow==9.4.0
 platformdirs==3.2.0
 prompt-toolkit==3.0.38
+protobuf==4.22.3
 psutil==5.9.5
 ptyprocess==0.7.0
 pure-eval==0.2.2
@@ -59,6 +61,7 @@ responses==0.18.0
 sacremoses==0.0.53
 scikit-learn==1.2.2
 scipy==1.10.1
+sentencepiece==0.1.98
 seqeval==1.2.2
 six==1.16.0
 stack-data==0.6.2
@@ -77,3 +80,4 @@ urllib3==1.26.15
 wcwidth==0.2.6
 xxhash==3.2.0
 yarl==1.8.2
+zipp==3.15.0
