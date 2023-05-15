@@ -4,8 +4,8 @@
 import matplotlib.pyplot as plt
 import transformers
 from evaluate import load as load_metric
+from torch.optim import AdamW
 from transformers import (
-    AdamW,
     AutoModelForTokenClassification,
     AutoTokenizer,
     DataCollatorForTokenClassification,
