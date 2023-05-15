@@ -89,7 +89,6 @@ class TokenClassificationTrainer():
             'eps': 1e-08
         }
 
-        
         optimizer = AdamW(parameters if discriminate_lr else self.model.parameters(), lr=learning_rate, **kwargs)
         if scheduler:
             scheduler = get_cosine_schedule_with_warmup(optimizer, num_warmup_steps=num_train_epochs // 3, num_training_steps=num_train_epochs)
