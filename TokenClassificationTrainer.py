@@ -21,6 +21,8 @@ from utils import (
     get_optimizer_params,
     load_into_datasetdict,
     tokenize_and_align_labels,
+    convert_to_dataset,
+    read_conll
 )
 
 
@@ -50,7 +52,7 @@ class TokenClassificationTrainer():
         # Tokenize and align the labels on a sub-word level for all datasets
         self.tokenized_datasets = self.datasets.map(lambda examples: tokenize_and_align_labels(examples=examples, tokenizer=self.tokenizer, label_all_tokens=self.label_all_tokens, fast=self.fast), batched=True)
 
-    def set_trainer(self, use_old = False, learning_rate=2e-5, num_train_epochs = 10, weight_decay = 0.01, scheduler = False, checkpoint_path = "", plotting=False):
+    def set_trainer(self, use_old = False, learning_rate=2e-5, num_train_epochs = 10, weight_decay = 0.01, scheduler = True, checkpoint_path = "", plotting=False):
         if use_old:
             self.old_model()
         else: 
@@ -150,10 +152,24 @@ class TokenClassificationTrainer():
 
         return self.trainer
     
-    def evaluate(self, eval_dataset = None):
-        if eval_dataset:
-            return self.trainer.evaluate(eval_dataset=eval_dataset)
+    def evaluate(self):
         return self.trainer.evaluate()
+    
+    def evaluate_multiple(self, paths):
+        if type(paths) == str:
+            paths = [paths]
+
+        evaluations = []
+        for path in paths:
+            tokens, tags = read_conll(path)
+            dataset = convert_to_dataset(tokens, tags)
+            tokenized_dataset = dataset.map(lambda examples: tokenize_and_align_labels(examples=examples, tokenizer=self.tokenizer, label_all_tokens=self.label_all_tokens, fast=self.fast), batched=True)
+            evaluation = self.trainer.evaluate(eval_dataset=tokenized_dataset)
+            print(evaluation)
+            evaluations.append(evaluation)
+        return evaluations
+
+
 
 
 if __name__ == "__main__":

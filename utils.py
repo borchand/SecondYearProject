@@ -4,7 +4,7 @@ import re
 import datasets
 import numpy as np
 import pandas as pd
-from datasets import Dataset
+from datasets import Dataset, concatenate_datasets
 from torch.optim import AdamW
 
 
@@ -128,10 +128,19 @@ def convert_to_dataset(tokens, tags, features=CONLL_FEATURES):
 def load_into_datasetdict(path_dict, features=CONLL_FEATURES):
     dataset_splits = dict()
 
-    for key, path in path_dict.items():
-        tokens, tags = read_conll(path)
-        dataset = convert_to_dataset(tokens, tags, features=features)
+    for key, paths in path_dict.items():
 
+        if type(paths) == list:
+            dataset = None
+            for path in paths:
+                tokens, tags = read_conll(path)
+                if not dataset:
+                    dataset = convert_to_dataset(tokens, tags, features=features)
+                else:
+                    dataset = concatenate_datasets([dataset, convert_to_dataset(tokens, tags, features=features)])
+        else:
+            tokens, tags = read_conll(paths)
+            dataset = convert_to_dataset(tokens, tags, features=features)
         dataset_splits[key] = dataset
 
     return datasets.DatasetDict(dataset_splits)
