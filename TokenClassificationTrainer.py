@@ -48,9 +48,9 @@ class TokenClassificationTrainer():
             assert isinstance(self.tokenizer, transformers.PreTrainedTokenizerFast)
 
         # Tokenize and align the labels on a sub-word level for all datasets
-        self.tokenized_datasets = self.datasets.map(lambda examples: tokenize_and_align_labels(examples=examples, tokenizer=self.tokenizer, label_all_tokens=self.label_all_tokens, fast=self.fast), batched=True, plotting=False)
+        self.tokenized_datasets = self.datasets.map(lambda examples: tokenize_and_align_labels(examples=examples, tokenizer=self.tokenizer, label_all_tokens=self.label_all_tokens, fast=self.fast), batched=True)
 
-    def set_trainer(self, use_old = False, learning_rate=2e-5, num_train_epochs = 10, weight_decay = 0.01, scheduler = False):
+    def set_trainer(self, use_old = False, learning_rate=2e-5, num_train_epochs = 10, weight_decay = 0.01, scheduler = False, checkpoint_path = "", plotting=False):
         if use_old:
             self.old_model()
         else: 
@@ -58,7 +58,7 @@ class TokenClassificationTrainer():
 
         # Arguments for the trainer object
         args = TrainingArguments(
-            f"{self.model_name}-finetuned-{self.task}",
+            f"{checkpoint_path}{self.model_name}-finetuned-{self.task}",
             evaluation_strategy = "epoch",
             save_strategy = "epoch",
             save_total_limit=1,
@@ -143,8 +143,8 @@ class TokenClassificationTrainer():
         # Save the model
         self.model = AutoModelForTokenClassification.from_pretrained(f"models/{self.model_name}-finetuned-{self.task}")
 
-    def train_and_save(self):
-        self.trainer = self.set_trainer(use_old=False)
+    def train_and_save(self, checkpoint_path = ""):
+        self.trainer = self.set_trainer(use_old=False, checkpoint_path=checkpoint_path)
         self.trainer.train()
         self.trainer.save_model(f"models/{self.model_name}-finetuned-{self.task}")
 
