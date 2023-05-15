@@ -145,8 +145,8 @@ class TokenClassificationTrainer():
         # Save the model
         self.model = AutoModelForTokenClassification.from_pretrained(f"models/{self.model_name}-finetuned-{self.task}")
 
-    def train_and_save(self, checkpoint_path = ""):
-        self.trainer = self.set_trainer(use_old=False, checkpoint_path=checkpoint_path)
+    def train_and_save(self, **kwargs):
+        self.trainer = self.set_trainer(use_old=False, **kwargs)
         self.trainer.train()
         self.trainer.save_model(f"models/{self.model_name}-finetuned-{self.task}")
 
