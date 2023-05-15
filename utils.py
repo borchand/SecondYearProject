@@ -5,6 +5,7 @@ import datasets
 import numpy as np
 import pandas as pd
 from datasets import Dataset
+from torch.optim import AdamW
 
 
 def read_conll(path, nested=False):
@@ -283,6 +284,31 @@ def compute_metrics(p, label_list, metric):
         "span_f1": results["overall_span_f1"],
         "accuracy": results["overall_accuracy"],
     }
+
+
+def get_optimizer_params(model, learning_rate=5e-5):
+    no_decay = ['bias', 'gamma', 'beta']
+    embeddings = ['emb']
+    group1=['.0.','.1.','.2.','.3.']
+    group2=['.4.','.5.','.6.','.7.']    
+    group3=['.8.','.9.','.10.','.11.']    
+    group4=['.12.','.13.','.14.','.15.']
+    optimizer_parameters = [
+        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in embeddings)],'weight_decay_rate': 0.01, 'lr': learning_rate/2.6**4},
+        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in group1)],'weight_decay_rate': 0.01, 'lr': learning_rate/2.6**3},
+        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in group2)],'weight_decay_rate': 0.01, 'lr': learning_rate/2.6**2},
+        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in group3)],'weight_decay_rate': 0.01, 'lr': learning_rate/2.6},
+        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in group4)],'weight_decay_rate': 0.01, 'lr': learning_rate},
+        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in embeddings)],'weight_decay_rate': 0.0, 'lr': learning_rate/2.6**4},
+        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in group1)],'weight_decay_rate': 0.0, 'lr': learning_rate/2.6**3},
+        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in group2)],'weight_decay_rate': 0.0, 'lr': learning_rate/2.6**2},
+        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in group3)],'weight_decay_rate': 0.0, 'lr': learning_rate/2.6},
+        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in group4)],'weight_decay_rate': 0.0, 'lr': learning_rate},
+        {'params': [p for n, p in model.named_parameters() if "classifier" in n], 'lr':learning_rate*2, "momentum" : 0.99},
+    ]
+
+    return optimizer_parameters
+
 
 
 if __name__ == '__main__':

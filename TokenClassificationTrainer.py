@@ -1,18 +1,27 @@
 # Based on notebook from HuggingFace:
 # https://colab.research.google.com/github/huggingface/notebooks/blob/master/examples/token_classification.ipynb#scrollTo=DDtsaJeVIrJT
 
+import matplotlib.pyplot as plt
 import transformers
 from evaluate import load as load_metric
 from transformers import (
+    AdamW,
     AutoModelForTokenClassification,
     AutoTokenizer,
     DataCollatorForTokenClassification,
+    EarlyStoppingCallback,
     Trainer,
     TrainingArguments,
-    EarlyStoppingCallback,
+    get_constant_schedule_with_warmup,
+    get_cosine_schedule_with_warmup,
 )
 
-from utils import compute_metrics, load_into_datasetdict, tokenize_and_align_labels
+from utils import (
+    compute_metrics,
+    get_optimizer_params,
+    load_into_datasetdict,
+    tokenize_and_align_labels,
+)
 
 
 class TokenClassificationTrainer():
@@ -39,9 +48,9 @@ class TokenClassificationTrainer():
             assert isinstance(self.tokenizer, transformers.PreTrainedTokenizerFast)
 
         # Tokenize and align the labels on a sub-word level for all datasets
-        self.tokenized_datasets = self.datasets.map(lambda examples: tokenize_and_align_labels(examples=examples, tokenizer=self.tokenizer, label_all_tokens=self.label_all_tokens, fast=self.fast), batched=True)
+        self.tokenized_datasets = self.datasets.map(lambda examples: tokenize_and_align_labels(examples=examples, tokenizer=self.tokenizer, label_all_tokens=self.label_all_tokens, fast=self.fast), batched=True, plotting=False)
 
-    def set_trainer(self, use_old = False, learning_rate=2e-5, num_train_epochs = 100, weight_decay = 0.01):
+    def set_trainer(self, use_old = False, learning_rate=2e-5, num_train_epochs = 10, weight_decay = 0.01, scheduler = False):
         if use_old:
             self.old_model()
         else: 
@@ -52,6 +61,7 @@ class TokenClassificationTrainer():
             f"{self.model_name}-finetuned-{self.task}",
             evaluation_strategy = "epoch",
             save_strategy = "epoch",
+            save_total_limit=1,
             learning_rate=learning_rate,
             per_device_train_batch_size=self.batch_size,
             per_device_eval_batch_size=self.batch_size,
@@ -71,9 +81,49 @@ class TokenClassificationTrainer():
 
         labels = [self.label_list[i] for i in example[f"tags"]]
 
+        parameters = get_optimizer_params(self.model, learning_rate=learning_rate)
+        kwargs = {
+            'betas': (0.9, 0.999),
+            'eps': 1e-08
+        }
+
+        
+        optimizer = AdamW(parameters, lr=learning_rate, **kwargs)
+        if scheduler:
+            scheduler = get_cosine_schedule_with_warmup(optimizer, num_warmup_steps=num_train_epochs // 3, num_training_steps=num_train_epochs)
+        else:
+            scheduler = get_constant_schedule_with_warmup(optimizer, num_warmup_steps=num_train_epochs // 3)
+
+
+        # plotting
+        if plotting:
+            learning_rates1, learning_rates2, learning_rates3, learning_rates4, learning_rates5, learning_rates6 = [[] for i in range(6)]
+            for i in range(num_train_epochs):
+                optimizer.step()
+                scheduler.step()
+                learning_rates1.append(optimizer.param_groups[0]["lr"])
+                learning_rates2.append(optimizer.param_groups[1]["lr"])
+                learning_rates3.append(optimizer.param_groups[2]["lr"])
+                learning_rates4.append(optimizer.param_groups[3]["lr"])
+                learning_rates5.append(optimizer.param_groups[4]["lr"])
+                learning_rates6.append(optimizer.param_groups[10]["lr"])
+
+            plt.plot(learning_rates1, label="Embeddings")
+            plt.plot(learning_rates2, label="Transformer layer 0-3")
+            plt.plot(learning_rates3, label="Transformer layer 4-7")
+            plt.plot(learning_rates4, label="Transformer layer 8-11")
+            plt.plot(learning_rates5, label="Transformer layer 12-15")
+            plt.plot(learning_rates6, label="Classifier")
+            plt.yscale("log")        
+            plt.legend()
+            plt.show()
+
+
+
         self.trainer = Trainer(
             self.model,
             args,
+            # optimizers=(None, None),
             train_dataset=self.tokenized_datasets["train"],
             eval_dataset=self.tokenized_datasets["validation"],
             data_collator=data_collator,
@@ -96,7 +146,7 @@ class TokenClassificationTrainer():
     def train_and_save(self):
         self.trainer = self.set_trainer(use_old=False)
         self.trainer.train()
-        self.trainer.save_model(f"models/{model_name}-finetuned-{task}")
+        self.trainer.save_model(f"models/{self.model_name}-finetuned-{self.task}")
 
         return self.trainer
     
@@ -125,5 +175,6 @@ if __name__ == "__main__":
     tokenClassificationTrainer = TokenClassificationTrainer(task, model_name, batch_size, label_all_tokens, file_paths)
 
     # load trianed model to trainer
-    tokenClassificationTrainer.set_trainer(use_old = True)
-    print(tokenClassificationTrainer.evaluate())
+    tokenClassificationTrainer.set_trainer(use_old = False)
+    # print(tokenClassificationTrainer.evaluate())
+
