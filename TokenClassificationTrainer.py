@@ -27,9 +27,10 @@ from utils import (
 
 
 class TokenClassificationTrainer():
-    def __init__(self, task, model_name, batch_size, label_all_tokens, file_paths):
+    def __init__(self, task, model_name, save_name, batch_size, label_all_tokens, file_paths):
         self.task = task
         self.model_name = model_name
+        self.save_name = save_name
         self.batch_size = batch_size
         self.label_all_tokens = label_all_tokens
         self.file_paths = file_paths
@@ -60,7 +61,7 @@ class TokenClassificationTrainer():
 
         # Arguments for the trainer object
         args = TrainingArguments(
-            f"{checkpoint_path}{self.model_name}-finetuned-{self.task}",
+            f"{checkpoint_path}{self.model_name}-finetuned-{self.task}-{self.save_name}",
             evaluation_strategy = "epoch",
             save_strategy = "epoch",
             save_total_limit=1,
