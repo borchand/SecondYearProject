@@ -143,12 +143,12 @@ class TokenClassificationTrainer():
     
     def old_model(self):
         # Save the model
-        self.model = AutoModelForTokenClassification.from_pretrained(f"models/{self.model_name}-finetuned-{self.task}")
+        self.model = AutoModelForTokenClassification.from_pretrained(f"models/{self.model_name}-finetuned-{self.task}-{self.save_name}")
 
     def train_and_save(self, **kwargs):
         self.trainer = self.set_trainer(use_old=False, **kwargs)
         self.trainer.train()
-        self.trainer.save_model(f"models/{self.model_name}-finetuned-{self.task}")
+        self.trainer.save_model(f"models/{self.model_name}-finetuned-{self.task}-{self.save_name}")
 
         return self.trainer
     
