@@ -53,7 +53,7 @@ class TokenClassificationTrainer():
         # Tokenize and align the labels on a sub-word level for all datasets
         self.tokenized_datasets = self.datasets.map(lambda examples: tokenize_and_align_labels(examples=examples, tokenizer=self.tokenizer, label_all_tokens=self.label_all_tokens, fast=self.fast), batched=True)
 
-    def set_trainer(self, use_old = False, learning_rate=2e-5, num_train_epochs = 10, weight_decay = 0.01, scheduler = True, checkpoint_path = "", plotting=False, discriminate_lr=False):
+    def set_trainer(self, use_old = False, learning_rate=2e-5, num_train_epochs = 10, weight_decay = 0.01, scheduler = True, checkpoint_path = "", plotting=False, discriminate_lr=False, seed=123):
         if use_old:
             self.old_model()
         else: 
@@ -71,7 +71,8 @@ class TokenClassificationTrainer():
             num_train_epochs=num_train_epochs,
             weight_decay=weight_decay,
             use_mps_device=False,
-            load_best_model_at_end = True
+            load_best_model_at_end = True,
+            seed=seed
         )
 
         # Pad the labels to the maximum length of the sequences in the examples given
