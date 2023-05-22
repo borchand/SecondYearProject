@@ -1,6 +1,8 @@
 # Based on notebook from HuggingFace:
 # https://colab.research.google.com/github/huggingface/notebooks/blob/master/examples/token_classification.ipynb#scrollTo=DDtsaJeVIrJT
 
+import os
+
 import matplotlib.pyplot as plt
 import transformers
 from evaluate import load as load_metric
@@ -53,22 +55,26 @@ class TokenClassificationTrainer():
         # Tokenize and align the labels on a sub-word level for all datasets
         self.tokenized_datasets = self.datasets.map(lambda examples: tokenize_and_align_labels(examples=examples, tokenizer=self.tokenizer, label_all_tokens=self.label_all_tokens, fast=self.fast), batched=True)
 
-    def set_trainer(self, use_old = False, learning_rate=2e-5, num_train_epochs = 10, weight_decay = 0.01, scheduler = True, checkpoint_path = "", plotting=False, discriminate_lr=False, seed=123):
+    def set_trainer(self, use_old = False, learning_rate=2e-5, num_epochs = 10, weight_decay = 0.01, scheduler = True, checkpoint_path = "", plotting=False, discriminate_lr=False, seed=123):
         if use_old:
             self.old_model()
         else: 
             self.new_model()
 
+        # Create folder for trainer checkpoints if not already existing
+        if not os.path.exists("checkpoints"):
+            os.makedirs("checkpoints")
+
         # Arguments for the trainer object
         args = TrainingArguments(
-            f"{checkpoint_path}{self.model_name}-finetuned-{self.task}-{self.save_name}",
+            f"checkpoints/{self.model_name}-finetuned-{self.task}-{self.save_name}",
             evaluation_strategy = "epoch",
             save_strategy = "epoch",
             save_total_limit=1,
             learning_rate=learning_rate,
             per_device_train_batch_size=self.batch_size,
             per_device_eval_batch_size=self.batch_size,
-            num_train_epochs=num_train_epochs,
+            num_train_epochs=num_epochs,
             weight_decay=weight_decay,
             use_mps_device=False,
             load_best_model_at_end = True,
@@ -93,15 +99,15 @@ class TokenClassificationTrainer():
 
         optimizer = AdamW(parameters if discriminate_lr else self.model.parameters(), lr=learning_rate, **kwargs)
         if scheduler:
-            scheduler = get_cosine_schedule_with_warmup(optimizer, num_warmup_steps=num_train_epochs // 3, num_training_steps=num_train_epochs)
+            scheduler = get_cosine_schedule_with_warmup(optimizer, num_warmup_steps=num_epochs // 3, num_training_steps=num_epochs)
         else:
-            scheduler = get_constant_schedule_with_warmup(optimizer, num_warmup_steps=num_train_epochs // 3)
+            scheduler = get_constant_schedule_with_warmup(optimizer, num_warmup_steps=num_epochs // 3)
 
 
         # plotting
         if plotting and discriminate_lr:
             learning_rates1, learning_rates2, learning_rates3, learning_rates4, learning_rates5, learning_rates6 = [[] for i in range(6)]
-            for i in range(num_train_epochs):
+            for i in range(num_epochs):
                 optimizer.step()
                 scheduler.step()
                 learning_rates1.append(optimizer.param_groups[0]["lr"])
