@@ -176,6 +176,12 @@ class TokenClassificationTrainer():
             evaluations.append(evaluation)
         return evaluations
 
+    def del_trainer(self):
+        del self.trainer
+        del self.tokenizer
+        del self.model
+        del self.datasets
+
 
 
 
