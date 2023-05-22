@@ -55,7 +55,8 @@ Other hyperparameters can be used by using the following arguments:
 
 
 ## Using our model
-Our fine-tuned model can be fund in the folder [git_models](https://github.com/borchand/SecondYearProject/tree/main/git_models). Model is compressed to a zip file. In order to use the model follow these steps:
-1. Create a folder called ```models``` in the root directory
-2. Decompress the zip file
-3. Move the decompress  folder into the new folder ```models```
+Our fine-tuned models can be fund in the folder [zip_models](https://github.com/borchand/SecondYearProject/tree/main/zip_models). The models are named by their ```save_name``` and are compressed to zip files. In order to use the models run:
+```bash
+python3 unzip_models.py
+```
+This will create a folder called models. Each model will be named as ```xlm-mlm-17-1280-finetuned-ner-{save-name}```. To run a specific model, the ```save_name``` needs to be set in the ```TokenClassificationTrainer```.
