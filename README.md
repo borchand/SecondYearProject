@@ -74,6 +74,7 @@ To recreate the model evaluation, follow these steps:
     ```
 Other hyperparameters can be used by using the following arguments:
 - batch_size: `--batch_size`
+- to_csv: `--to_csv` (default=True)
 - save_name: `--save_name` (This will override `--discriminative_lr` and `--cosine_schedule`)
 
 
