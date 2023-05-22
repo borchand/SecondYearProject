@@ -56,7 +56,7 @@ if __name__ == "__main__":
             if save_name == "":
                 save_name = "discriminative-lr"
             else:
-                save_name += "_AND_discriminative_lr"
+                save_name += "-AND-discriminative-lr"
 
         if save_name == "":
             save_name = "baseline"
