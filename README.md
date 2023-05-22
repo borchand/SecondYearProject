@@ -1,6 +1,53 @@
 # SecondYearProject
+The following project is created in connection with our Second Year Project "Optimizing for cross-lingual learning for multilingual language models on unseen languages of similar structures".
+The goal of our project is to answer the following research question: __How can large multilingual language models be optimized for transf learning from seen to unseen languages?__, as well as the following sub-questions:
+- SQ1: Does discriminate learning rates for different layers improve cross-lingual performance?
+- SQ2: How does similarity of languages impact the transfer of learning?
 
-### Using our model
+## Recreating our results
+To recreate our results, follow these steps:
+1. Clone the repository
+1. Create a virtual environment and install the requirements using:
+    ```bash
+    pip install -r requirements.txt
+    ```
+1. To train the baseline model run:
+    ```bash
+    python3 train.py
+    ```
+1. To train the other variations use the following arguments to augment the training script:
+    - To add discriminate learning rates for different layers:
+        ```bash
+        --discriminative_lr True
+        ```
+    - Cosine scheduling:
+        ```bash
+        --cosine_schedule True
+        ```
+    Example:
+    ```bash
+    python3 train.py --discriminative_lr True --cosine_schedule True
+    ```
+
+1. To get replicate the evaluation results used for significance testing of the model optimizations run
+    ```bash
+    python3 full_run_script.py --replicate True
+    ```
+    Else if wanting to run experiment with different seeds,r run
+    ```bash
+    python3 full_run_script.py --replicate False
+    ```
+    When running with different seeds the number of seeds can be specified using the argument ```--num_seeds```. The default is 10.
+
+    All results will be saved to the results folder
+1. To get the results for the significance testing run
+    ```bash
+    python3 significance_testing.py
+    ```
+    This will print the results of the significance testing to the terminal as well as save the results to a latex table in the folder results
+
+
+## Using our model
 Our fine-tuned model can be fund in the folder [git_models](https://github.com/borchand/SecondYearProject/tree/main/git_models). Model is compressed to a zip file. In order to use the model follow these steps:
 1. Create a folder called ```models``` in the root directory
 2. Decompress the zip file
