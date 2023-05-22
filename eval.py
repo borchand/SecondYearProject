@@ -1,6 +1,7 @@
 import argparse
 import pandas as pd
 from TokenClassificationTrainer import TokenClassificationTrainer
+import os
 
 def eval(task, model_name, save_name, batch_size):
     # Flag to indicate whether to label all tokens or just the first token of each word
@@ -36,21 +37,18 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--discriminative_lr", type=bool, default=False)
     parser.add_argument("--cosine_schedule", type=bool, default=False)
-    parser.add_argument("--save_name", type=str, default=None)
+    parser.add_argument("--save_name", type=str, default="")
     parser.add_argument("--batch_size", type=int, default=16)
-    parser.add_argument("--lr", type=int, default=2e-5)
-    parser.add_argument("--num_epochs", type=int, default=10)
     parser.add_argument("--to_csv", type=bool, default=True)
     args = parser.parse_args()
 
     # Set the task and name of the pretrained model and the batch size for finetuning
     task = "ner"
     model_name = "xlm-mlm-17-1280"
-    batch_size = 32
 
     save_name = args.save_name
 
-    if save_name is None:
+    if save_name == "":
         if args.cosine_schedule:
             save_name = "scheduler"
 
@@ -63,8 +61,10 @@ if __name__ == "__main__":
         if save_name == "":
             save_name = "baseline"
 
-    df = eval(task, model_name, args.save_name, args.batch_size)
+    df = eval(task, model_name, save_name, args.batch_size)
     if args.to_csv:
-        df.to_csv(f"evaluations/{args.save_name}.csv", index=False)
+        if not os.path.exists('./evaluations'):
+            os.makedirs('./evaluations')
+        df.to_csv(f"evaluations/{save_name}.csv", index=False)
     else:
         print(df)
