@@ -9,7 +9,7 @@ def runs(discriminate_lr = False, scheduler = False, save_name = "baseline"):
     # Set the task and name of the pretrained model and the batch size for finetuning
     task = "ner"
     model_name = "xlm-mlm-17-1280"  # "bert-base-multilingual-cased" or "xlm-mlm-17-1280"
-    seed = np.random.randint(0, 1000)
+    seed = np.random.randint(0,10000000000)
     save_name = save_name + ".seed-" + str(seed)
     batch_size = 32
 
@@ -68,33 +68,19 @@ if __name__ == "__main__":
     with open('its working', 'wb') as f:
         pickle.dump('hahaha',f)
     for i in range(10):
-        print(i)
         list_baseline.append(runs(save_name = "baseline"))
-        print(list_baseline)
+        with open('list_baseline', 'wb') as f:
+            pickle.dump(list_baseline,f)
+            
         list_discriminate_lr.append(runs(discriminate_lr = True, save_name = "discriminate_lr"))
-        torch.cuda.empty_cache()
-        torch.cuda.reset_max_memory_allocated()
-        torch.cuda.reset_peak_memory_stats()
+        with open('list_discriminate_lr', 'wb') as f:
+            pickle.dump(list_discriminate_lr,f)  
+            
         list_scheduler.append(runs(scheduler = True, save_name = "scheduler"))
+        with open('list_scheduler', 'wb') as f:
+            pickle.dump(list_scheduler,f)       
+            
         list_both.append(runs(discriminate_lr = True, scheduler = True, save_name = "both"))
-        with open(f'number_of_{i}', 'wb') as f:
-            pickle.dump(i,f)
-        torch.cuda.empty_cache()
-        torch.cuda.reset_max_memory_allocated()
-        torch.cuda.reset_peak_memory_stats()
-
-    with open('list_baseline', 'wb') as f:
-        pickle.dump(list_baseline,f)
+        with open('list_both', 'wb') as f:
+            pickle.dump(list_both,f)   
         
-    with open('list_discriminate_lr', 'wb') as f:
-        pickle.dump(list_discriminate_lr,f)
-
-    with open('list_scheduler', 'wb') as f:
-        pickle.dump(list_scheduler,f)
-        
-    with open('list_both', 'wb') as f:
-        pickle.dump(list_both,f)
-
-    with open(f'FINISHED', 'wb') as f:
-        pickle.dump(list_both,f)
-    
