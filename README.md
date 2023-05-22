@@ -4,10 +4,10 @@ The goal of our project is to answer the following research question: __How can 
 - SQ1: Does discriminate learning rates for different layers improve cross-lingual performance?
 - SQ2: How does similarity of languages impact the transfer of learning?
 
-## Recreating our results
-To recreate our results, follow these steps:
+## Recreating model training
+To recreate the model training, follow these steps:
 1. Clone the repository
-1. Create a virtual environment and install the requirements using:
+1. Create a virtual environment and install the requirements using eg. using pip:
     ```bash
     pip install -r requirements.txt
     ```
@@ -29,15 +29,22 @@ To recreate our results, follow these steps:
     python3 train.py --discriminative_lr True --cosine_schedule True
     ```
 
-1. To get replicate the evaluation results used for significance testing of the model optimizations run
+Other hyperparameters can be used by using the following arguments:
+- batch_size: `--batch_size`
+- learning_rate: `--lr`
+- epochs: `--epochs`
+
+
+## Recreating significance testing of models
+1. To replicate the evaluation results used for significance testing of the model optimizations run
     ```bash
     python3 full_run_script.py --replicate True
     ```
-    Else if wanting to run experiment with different seeds,r run
+    Else if wanting to run experiment with different seeds then run
     ```bash
     python3 full_run_script.py --replicate False
     ```
-    When running with different seeds the number of seeds can be specified using the argument ```--num_seeds```. The default is 10.
+    When running with different seeds the number of seeds to be ran can be specified using the argument `--num_seeds`. The default is 10.
 
     All results will be saved to the results folder
 1. To get the results for the significance testing run
