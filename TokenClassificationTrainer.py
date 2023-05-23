@@ -174,6 +174,7 @@ class TokenClassificationTrainer():
 
         evaluations = []
         for path in paths:
+            print(path)
             tokens, tags = read_conll(path)
             dataset = convert_to_dataset(tokens, tags)
             tokenized_dataset = dataset.map(lambda examples: tokenize_and_align_labels(examples=examples, tokenizer=self.tokenizer, label_all_tokens=self.label_all_tokens, fast=self.fast), batched=True)
