@@ -80,8 +80,8 @@ def runs(discriminate_lr = False, scheduler = False, save_name = "baseline", bot
 if __name__ == "__main__":
     list_baseline = []
     list_discriminate_lr = []
-    list_scheduler = []
-    list_both = []
+    list_german_val = []
+    list_eng_german_dataset = []
     with open('its working', 'wb') as f:
         pickle.dump('hahaha',f)
     for i in range(10):
@@ -89,15 +89,15 @@ if __name__ == "__main__":
         with open('list_baseline', 'wb') as f:
             pickle.dump(list_baseline,f)
             
-        list_discriminate_lr.append(runs(discriminate_lr = True, save_name = "discriminate_lr"))
+        list_discriminate_lr.append(runs(discriminate_lr = True, save_name = "discriminate-lr"))
         with open('list_discriminate_lr', 'wb') as f:
             pickle.dump(list_discriminate_lr,f)  
-            
-        list_scheduler.append(runs(scheduler = True, save_name = "scheduler"))
-        with open('list_scheduler', 'wb') as f:
-            pickle.dump(list_scheduler,f)       
-            
-        list_both.append(runs(discriminate_lr = True, scheduler = True, save_name = "both"))
-        with open('list_both', 'wb') as f:
-            pickle.dump(list_both,f)   
+
+        list_german_val.append(runs(german_val=True, save_name = "german-val"))
+        with open('german-val', 'wb') as f:
+            pickle.dump(list_german_val,f)  
         
+        list_eng_german_dataset.append(runs(both_train =True, save_name = "eng-german-train"))
+        with open('german-val', 'wb') as f:
+            pickle.dump(list_eng_german_dataset,f)  
+
