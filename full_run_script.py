@@ -9,7 +9,7 @@ def runs(discriminate_lr = False, scheduler = False, save_name = "baseline"):
     # Set the task and name of the pretrained model and the batch size for finetuning
     task = "ner"
     model_name = "xlm-mlm-17-1280"  # "bert-base-multilingual-cased" or "xlm-mlm-17-1280"
-    seed = np.random.randint(0,10000000000)
+    seed = np.random.randint(0,100000)
     save_name = save_name + ".seed-" + str(seed)
     batch_size = 32
 

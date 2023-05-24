@@ -55,7 +55,7 @@ class TokenClassificationTrainer():
         # Tokenize and align the labels on a sub-word level for all datasets
         self.tokenized_datasets = self.datasets.map(lambda examples: tokenize_and_align_labels(examples=examples, tokenizer=self.tokenizer, label_all_tokens=self.label_all_tokens, fast=self.fast), batched=True)
 
-    def set_trainer(self, use_old = False, learning_rate=2e-5, num_epochs = 10, weight_decay = 0.01, scheduler = False, checkpoint_path = "", plotting=False, discriminate_lr=False, seed=123):
+    def set_trainer(self, use_old = False, learning_rate=2e-5, num_epochs = 15, weight_decay = 0.01, scheduler = False, checkpoint_path = "", plotting=False, discriminate_lr=False, seed=123):
         if use_old:
             self.old_model()
         else: 
@@ -138,7 +138,7 @@ class TokenClassificationTrainer():
             data_collator=data_collator,
             tokenizer=self.tokenizer,
             compute_metrics=lambda p: compute_metrics(p=p, label_list=self.label_list, metric=metric),
-            callbacks=[EarlyStoppingCallback(early_stopping_patience=3)],
+            callbacks=[EarlyStoppingCallback(early_stopping_patience=5)],
         )
 
         return self.trainer
