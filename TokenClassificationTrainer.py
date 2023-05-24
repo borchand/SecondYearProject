@@ -2,6 +2,7 @@
 # https://colab.research.google.com/github/huggingface/notebooks/blob/master/examples/token_classification.ipynb#scrollTo=DDtsaJeVIrJT
 
 import os
+from typing import Dict
 
 import matplotlib.pyplot as plt
 import transformers
@@ -26,6 +27,13 @@ from utils import (
     read_conll,
     tokenize_and_align_labels,
 )
+
+
+class MyTrainer(Trainer):
+    def log(self, logs: Dict[str, float]) -> None:
+        logs["learning_rate"] = self._get_learning_rate()
+        super().log(logs)
+
 
 
 class TokenClassificationTrainer():
