@@ -29,7 +29,7 @@ def runs(discriminate_lr = False, scheduler = False, save_name = "baseline"):
     # Training
     trainer.train(discriminate_lr = discriminate_lr, scheduler = scheduler, seed = seed)
 
-    evals = trainer.evaluate_multiple(["data/datasets/baseline/en_ewt_nn_newsgroup_test.conll", "data/datasets/NoSta-D/NER-de-test.tsv", "data/datasets/DaNplus/da_news_test.tsv", "data/datasets/hungarian/hungarian_test.tsv"])
+    evals = trainer.evaluate_multiple(["data/datasets/baseline/en_ewt_nn_test_newsgroup_and_weblogs.conll", "data/datasets/NoSta-D/NER-de-test.tsv", "data/datasets/DaNplus/da_news_comb_test.tsv", "data/datasets/hungarian/hungarian_test.tsv"])
 
     baseline_eval_baseline_model = evals[0]
     NoStaD_eval_baseline_model = evals[1]
