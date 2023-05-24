@@ -18,8 +18,8 @@ def runs(discriminate_lr = False, scheduler = False, save_name = "baseline"):
 
     # File paths to splits of the chosen dataset
     file_paths = {
-        "train": "data/datasets/baseline/en_ewt_nn_train.conll",
-        "validation": "data/datasets/baseline/en_ewt_nn_newsgroup_dev.conll",
+        "train": "data/datasets/baseline/en_ewt_nn_train_newsgroup_and_weblogs.conll",
+        "validation": "data/datasets/baseline/en_ewt_nn_dev_newsgroup_and_weblogs.conll",
     }
 
     # initialize trainer
