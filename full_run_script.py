@@ -21,23 +21,6 @@ def runs(discriminate_lr = False, save_name = "baseline", both_train = False, ge
         "train": "data/datasets/NoSta-D/NER-de-train.tsv'",
         "validation": "data/datasets/NoSta-D/NER-de-dev.tsv",
     }
-    
-    if both_train and german_val:
-        raise ValueError("both_train and german_val cannot be true at the same time")
-    
-    if both_train:
-        file_paths = {
-        "train": ["data/datasets/baseline/en_ewt_nn_train_newsgroup_and_weblogs.conll", 'data/datasets/NoSta-D/NER-de-train.tsv'],
-        "validation": "data/datasets/baseline/en_ewt_nn_dev_newsgroup_and_weblogs.conll",
-    }
-    
-    if german_val:
-        file_paths = {
-        "train": "data/datasets/baseline/en_ewt_nn_train_newsgroup_and_weblogs.conll",
-        "validation": "data/datasets/NoSta-D/NER-de-dev.tsv",
-    }
-    
-        
 
     # initialize trainer
     trainer = TokenClassificationTrainer(task, model_name, save_name, batch_size, label_all_tokens, file_paths)
@@ -68,8 +51,6 @@ def runs(discriminate_lr = False, save_name = "baseline", both_train = False, ge
     df.loc[3] = ["Hungarian", "Hungarian", seed] + [value for _, value in Hungarian_eval_baseline_model.items()]
     
     
-    
-    
     torch.cuda.empty_cache()
     torch.cuda.reset_max_memory_allocated()
     torch.cuda.reset_peak_memory_stats()
@@ -85,7 +66,6 @@ if __name__ == "__main__":
     with open('its working', 'wb') as f:
         pickle.dump('hahaha',f)
     for i in range(19):
-        rate = 0.95 - i*0.05
         
         list_baseline.append(runs(save_name = "baseline"))
         with open('list_baseline', 'wb') as f:
@@ -95,6 +75,7 @@ if __name__ == "__main__":
         with open('list_discriminate_lr', 'wb') as f:
             pickle.dump(list_discriminate_lr,f)  
             
+        # rate = 0.95 - i*0.05
         # list_discriminate_lr.append(runs(discriminate_lr = True,rate=rate, save_name = "discriminate-lr-rate"))
         # with open('list_discriminate_lr-diff-rate', 'wb') as f:
         #     pickle.dump(list_discriminate_lr,f)  
