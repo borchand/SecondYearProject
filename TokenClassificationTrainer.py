@@ -14,9 +14,7 @@ from transformers import (
     DataCollatorForTokenClassification,
     EarlyStoppingCallback,
     Trainer,
-    TrainingArguments,
-    get_constant_schedule_with_warmup,
-    get_cosine_schedule_with_warmup,
+    TrainingArguments
 )
 
 from utils import (
@@ -106,18 +104,12 @@ class TokenClassificationTrainer():
         }
 
         optimizer = AdamW(parameters if discriminate_lr else self.model.parameters(), lr=learning_rate, **kwargs)
-        if scheduler:
-            scheduler = get_cosine_schedule_with_warmup(optimizer, num_warmup_steps=num_epochs // 3, num_training_steps=num_epochs)
-        else:
-            scheduler = None
-
 
         # plotting
         if plotting and discriminate_lr:
             learning_rates1, learning_rates2, learning_rates3, learning_rates4, learning_rates5, learning_rates6 = [[] for i in range(6)]
             for i in range(num_epochs):
                 optimizer.step()
-                scheduler.step()
                 learning_rates1.append(optimizer.param_groups[0]["lr"])
                 learning_rates2.append(optimizer.param_groups[1]["lr"])
                 learning_rates3.append(optimizer.param_groups[2]["lr"])
@@ -140,7 +132,7 @@ class TokenClassificationTrainer():
         self.trainer = MyTrainer(
             self.model,
             args,
-            optimizers=(optimizer, scheduler),
+            optimizers=(optimizer, None),
             train_dataset=self.tokenized_datasets["train"],
             eval_dataset=self.tokenized_datasets["validation"],
             data_collator=data_collator,
