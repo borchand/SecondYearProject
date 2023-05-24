@@ -18,7 +18,7 @@ def runs(discriminate_lr = False, save_name = "baseline", both_train = False, ge
 
     # File paths to splits of the chosen dataset
     file_paths = {
-        "train": "data/datasets/NoSta-D/NER-de-train.tsv'",
+        "train": "data/datasets/NoSta-D/NER-de-train.tsv",
         "validation": "data/datasets/NoSta-D/NER-de-dev.tsv",
     }
 
