@@ -137,7 +137,7 @@ class TokenClassificationTrainer():
 
 
 
-        self.trainer = Trainer(
+        self.trainer = MyTrainer(
             self.model,
             args,
             optimizers=(optimizer, scheduler),
