@@ -5,7 +5,7 @@ import torch
 import pickle
 
 
-def runs(discriminate_lr = False, scheduler = False, save_name = "baseline"):
+def runs(discriminate_lr = False, scheduler = False, save_name = "baseline", both_train = False, german_val = False):
     # Set the task and name of the pretrained model and the batch size for finetuning
     task = "ner"
     model_name = "xlm-mlm-17-1280"  # "bert-base-multilingual-cased" or "xlm-mlm-17-1280"
@@ -21,6 +21,23 @@ def runs(discriminate_lr = False, scheduler = False, save_name = "baseline"):
         "train": "data/datasets/baseline/en_ewt_nn_train_newsgroup_and_weblogs.conll",
         "validation": "data/datasets/baseline/en_ewt_nn_dev_newsgroup_and_weblogs.conll",
     }
+    
+    if both_train and german_val:
+        raise ValueError("both_train and german_val cannot be true at the same time")
+    
+    if both_train:
+        file_paths = {
+        "train": ["data/datasets/baseline/en_ewt_nn_train_newsgroup_and_weblogs.conll", 'data/datasets/NoSta-D/NER-de-train.tsv'],
+        "validation": "data/datasets/baseline/en_ewt_nn_dev_newsgroup_and_weblogs.conll",
+    }
+    
+    if german_val:
+        file_paths = {
+        "train": "data/datasets/baseline/en_ewt_nn_train_newsgroup_and_weblogs.conll",
+        "validation": "data/datasets/NoSta-D/NER-de-dev.tsv",
+    }
+    
+        
 
     # initialize trainer
     trainer = TokenClassificationTrainer(task, model_name, save_name, batch_size, label_all_tokens, file_paths)
