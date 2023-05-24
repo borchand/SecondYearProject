@@ -295,7 +295,7 @@ def compute_metrics(p, label_list, metric):
     }
 
 
-def get_optimizer_params(model, learning_rate=5e-5, rate=1.5):
+def get_optimizer_params(model, learning_rate=5e-5, rate=0.6):
     no_decay = ['bias', 'gamma', 'beta']
     embeddings = ['emb']
     group1=['.0.','.1.','.2.','.3.']
@@ -303,16 +303,16 @@ def get_optimizer_params(model, learning_rate=5e-5, rate=1.5):
     group3=['.8.','.9.','.10.','.11.']    
     group4=['.12.','.13.','.14.','.15.']
     optimizer_parameters = [
-        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in embeddings)],'weight_decay_rate': 0.01, 'lr': learning_rate/rate**5},
-        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in group1)],'weight_decay_rate': 0.01, 'lr': learning_rate/rate**4},
-        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in group2)],'weight_decay_rate': 0.01, 'lr': learning_rate/rate**3},
-        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in group3)],'weight_decay_rate': 0.01, 'lr': learning_rate/rate**2},
-        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in group4)],'weight_decay_rate': 0.01, 'lr': learning_rate/rate},
-        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in embeddings)],'weight_decay_rate': 0.0, 'lr': learning_rate/rate**5},
-        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in group1)],'weight_decay_rate': 0.0, 'lr': learning_rate/rate**4},
-        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in group2)],'weight_decay_rate': 0.0, 'lr': learning_rate/rate**3},
-        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in group3)],'weight_decay_rate': 0.0, 'lr': learning_rate/rate**2},
-        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in group4)],'weight_decay_rate': 0.0, 'lr': learning_rate/rate},
+        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in embeddings)],'weight_decay_rate': 0.01, 'lr': learning_rate*rate**5},
+        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in group1)],'weight_decay_rate': 0.01, 'lr': learning_rate*rate**4},
+        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in group2)],'weight_decay_rate': 0.01, 'lr': learning_rate*rate**3},
+        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in group3)],'weight_decay_rate': 0.01, 'lr': learning_rate*rate**2},
+        {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay) and any(nd in n for nd in group4)],'weight_decay_rate': 0.01, 'lr': learning_rate*rate},
+        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in embeddings)],'weight_decay_rate': 0.0, 'lr': learning_rate*rate**5},
+        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in group1)],'weight_decay_rate': 0.0, 'lr': learning_rate*rate**4},
+        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in group2)],'weight_decay_rate': 0.0, 'lr': learning_rate*rate**3},
+        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in group3)],'weight_decay_rate': 0.0, 'lr': learning_rate*rate**2},
+        {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay) and any(nd in n for nd in group4)],'weight_decay_rate': 0.0, 'lr': learning_rate*rate},
         {'params': [p for n, p in model.named_parameters() if "classifier" in n], 'lr':learning_rate, "momentum" : 0.99},
     ]
 

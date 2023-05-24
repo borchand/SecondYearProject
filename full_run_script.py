@@ -5,7 +5,7 @@ import torch
 import pickle
 
 
-def runs(discriminate_lr = False, scheduler = False, save_name = "baseline", both_train = False, german_val = False):
+def runs(discriminate_lr = False, save_name = "baseline", both_train = False, german_val = False,rate =0.7):
     # Set the task and name of the pretrained model and the batch size for finetuning
     task = "ner"
     model_name = "xlm-mlm-17-1280"  # "bert-base-multilingual-cased" or "xlm-mlm-17-1280"
@@ -18,8 +18,8 @@ def runs(discriminate_lr = False, scheduler = False, save_name = "baseline", bot
 
     # File paths to splits of the chosen dataset
     file_paths = {
-        "train": "data/datasets/baseline/en_ewt_nn_train_newsgroup_and_weblogs.conll",
-        "validation": "data/datasets/baseline/en_ewt_nn_dev_newsgroup_and_weblogs.conll",
+        "train": "data/datasets/NoSta-D/NER-de-train.tsv'",
+        "validation": "data/datasets/NoSta-D/NER-de-dev.tsv",
     }
     
     if both_train and german_val:
@@ -44,7 +44,7 @@ def runs(discriminate_lr = False, scheduler = False, save_name = "baseline", bot
 
 
     # Training
-    trainer.train(discriminate_lr = discriminate_lr, scheduler = scheduler, seed = seed)
+    trainer.train(discriminate_lr = discriminate_lr, seed = seed,learning_rate=2e-6,rate=rate)
 
     evals = trainer.evaluate_multiple(["data/datasets/baseline/en_ewt_nn_test_newsgroup_and_weblogs.conll", "data/datasets/NoSta-D/NER-de-test.tsv", "data/datasets/DaNplus/da_news_comb_test.tsv", "data/datasets/hungarian/hungarian_test.tsv"])
 
@@ -84,7 +84,9 @@ if __name__ == "__main__":
     list_eng_german_dataset = []
     with open('its working', 'wb') as f:
         pickle.dump('hahaha',f)
-    for i in range(10):
+    for i in range(19):
+        rate = 0.95 - i*0.05
+        
         list_baseline.append(runs(save_name = "baseline"))
         with open('list_baseline', 'wb') as f:
             pickle.dump(list_baseline,f)
@@ -92,12 +94,9 @@ if __name__ == "__main__":
         list_discriminate_lr.append(runs(discriminate_lr = True, save_name = "discriminate-lr"))
         with open('list_discriminate_lr', 'wb') as f:
             pickle.dump(list_discriminate_lr,f)  
-
-        list_german_val.append(runs(german_val=True, save_name = "german-val"))
-        with open('german-val', 'wb') as f:
-            pickle.dump(list_german_val,f)  
-        
-        list_eng_german_dataset.append(runs(both_train =True, save_name = "eng-german-train"))
-        with open('german-val', 'wb') as f:
-            pickle.dump(list_eng_german_dataset,f)  
+            
+        # list_discriminate_lr.append(runs(discriminate_lr = True,rate=rate, save_name = "discriminate-lr-rate"))
+        # with open('list_discriminate_lr-diff-rate', 'wb') as f:
+        #     pickle.dump(list_discriminate_lr,f)  
+            
 
