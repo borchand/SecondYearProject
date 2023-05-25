@@ -70,6 +70,9 @@ def read_results(folder_path, metric="span_f1"):
             for i, lang in enumerate(results.keys()):
                 result = run.at[i, metric]
 
+                if metric == "eval_loss":
+                    result = -result
+
                 if result == 0:
                     print(run)
 
@@ -90,20 +93,11 @@ def evaluate_aso(path="new_evals", metric="span_f1", seed=42, **kwargs):
         for name, result in results[lang].items():
             print(f"{name}: {np.mean(result)}")
         
-        aso_result = aso(results[lang]['Discriminate'], results[lang]['Baseline'], confidence_level=0.999, seed=seed, **kwargs)
+        aso_result = aso(results[lang]['Discriminate'], results[lang]['Baseline'], confidence_level=0.9875, seed=seed, **kwargs)
 
         print(f"ASO: \n{aso_result}")
-
-        print()
-
     
     return
-
-
-    # Evaluate using ASO
-    aso_result = multi_aso(results, confidence_level=0.95, return_df=True, seed=seed, **kwargs)
-
-    print(f"ASO: {aso_result}")
 
 
 def main():
