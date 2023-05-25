@@ -14,7 +14,7 @@ def runs(discriminate_lr = False, save_name = "baseline", both_train = False, ge
     batch_size = 32
 
     # Flag to indicate whether to label all tokens or just the first token of each word
-    label_all_tokens = True
+    label_all_tokens = False
 
     # File paths to splits of the chosen dataset
     file_paths = {
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     list_eng_german_dataset = []
     with open('its working', 'wb') as f:
         pickle.dump('hahaha',f)
-    for i in range(1):
+    for i in range(5):
         
         list_baseline.append(runs(save_name = "baseline"))
         with open('list_baseline', 'wb') as f:
@@ -74,10 +74,3 @@ if __name__ == "__main__":
         list_discriminate_lr.append(runs(discriminate_lr = True, save_name = "discriminate-lr"))
         with open('list_discriminate_lr_new', 'wb') as f:
             pickle.dump(list_discriminate_lr,f)  
-            
-        # rate = 0.95 - i*0.05
-        # list_discriminate_lr.append(runs(discriminate_lr = True,rate=rate, save_name = "discriminate-lr-rate"))
-        # with open('list_discriminate_lr-diff-rate', 'wb') as f:
-        #     pickle.dump(list_discriminate_lr,f)  
-            
-
