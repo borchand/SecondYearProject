@@ -12,15 +12,13 @@ def check_seeds():
 
     paths = {
         "Baseline": "list_baseline",
-        "Scheduler": "list_scheduler",
         "Discriminate": "list_discriminate_lr",
-        "Both": "list_both"
     }
 
     seeds = dict()
 
     for name, path in paths.items():
-        with open(f"pickled_evals/{path}", "rb") as f:
+        with open(f"{path}", "rb") as f:
             runs = pickle.load(f)
         
         seeds[name] = []
@@ -38,35 +36,25 @@ def read_results(folder_path, metric="span_f1"):
     # Use glob to get all files in path
     paths = {
         "Baseline": "list_baseline",
-        "Scheduler": "list_scheduler",
         "Discriminate": "list_discriminate_lr",
-        "Both": "list_both"
     }
 
     results = {
         "english": {
             "Baseline": [],
-            "Scheduler": [],
             "Discriminate": [],
-            "Both": []
         },
         "german": {
             "Baseline": [],
-            "Scheduler": [],
             "Discriminate": [],
-            "Both": []
         },
         "danish": {
             "Baseline": [],
-            "Scheduler": [],
             "Discriminate": [],
-            "Both": []
         },
         "hungarian": {
             "Baseline": [],
-            "Scheduler": [],
             "Discriminate": [],
-            "Both": []
         }
     }
 
@@ -123,22 +111,22 @@ def main():
     # pprint(check_seeds())
     # evaluate_aso(metric="span_f1", seed=42)
 
-    results = read_results("pickled_evals", metric="span_f1")
+    results = read_results("new_evals", metric="span_f1")
 
     fig = plt.figure(figsize=(10, 10))
     for i, lang in enumerate(results.keys()):
         plt.subplot(2, 2, i+1)
         plt.title(lang)
-        mus = dict()
-        std = dict()
         for name, result in results[lang].items():
-            mus[name] = np.mean(result)
-            std[name] = np.std(result)
-        
-        # Plot cdf of normal distribution for each
-        for name, mu in mus.items():
-            x = np.linspace(mu - 3*std[name], mu + 3*std[name], 100)
-            plt.plot(x, stats.norm.pdf(x, mu, std[name]), label=name)
+            mu = np.mean(result)
+            sigma = np.std(result)
+
+            # plot kde of results
+            x = np.linspace(mu - 3*sigma, mu + 3*sigma, 100)
+            kde = stats.gaussian_kde(result)
+            plt.plot(x, kde(x), label=name)
+
+    
         
         plt.legend()
     
