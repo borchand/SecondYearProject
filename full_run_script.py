@@ -5,7 +5,7 @@ import torch
 import pickle
 
 
-def runs(discriminate_lr = False, save_name = "baseline", both_train = False, german_val = False, rate = 0.7):
+def runs(discriminate_lr = False, save_name = "baseline", rate = 0.7):
     # Set the task and name of the pretrained model and the batch size for finetuning
     task = "ner"
     model_name = "xlm-mlm-17-1280"  # "bert-base-multilingual-cased" or "xlm-mlm-17-1280"

@@ -9,8 +9,8 @@ def eval(task, model_name, save_name, batch_size):
 
     # File paths to splits of the chosen dataset
     file_paths = {
-        "train": "data/datasets/ewt/en_ewt_nn_train_newsgroup_and_weblogs.conll",
-        "validation": "data/datasets/ewt/en_ewt_nn_dev_newsgroup_and_weblogs.conll",
+        "train": "data/datasets/Nosta-D/NER-de-train.tsv",
+        "validation": "data/datasets/NoSta-D/NER-de-dev.tsv",
     }
 
     trainer = TokenClassificationTrainer(task, model_name, save_name, batch_size, label_all_tokens, file_paths)
@@ -36,7 +36,6 @@ if __name__ == "__main__":
     # Parse arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("--discriminative_lr", type=bool, default=False)
-    parser.add_argument("--cosine_schedule", type=bool, default=False)
     parser.add_argument("--save_name", type=str, default="")
     parser.add_argument("--batch_size", type=int, default=16)
     parser.add_argument("--to_csv", type=bool, default=True)
@@ -49,16 +48,11 @@ if __name__ == "__main__":
     save_name = args.save_name
 
     if save_name == "":
-        if args.cosine_schedule:
-            save_name = "scheduler"
 
         if args.discriminative_lr:
-            if save_name == "":
-                save_name = "discriminative-lr"
-            else:
-                save_name += "-AND-discriminative-lr"
+            save_name = "discriminative-lr"
 
-        if save_name == "":
+        else:
             save_name = "baseline"
 
     df = eval(task, model_name, save_name, args.batch_size)
