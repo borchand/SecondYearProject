@@ -1,14 +1,14 @@
 import argparse
-
+import numpy as np
 from TokenClassificationTrainer import TokenClassificationTrainer
 
 # Parse arguments
 parser = argparse.ArgumentParser()
 parser.add_argument("--discriminative_lr", type=bool, default=False)
-parser.add_argument("--cosine_schedule", type=bool, default=False)
 parser.add_argument("--batch_size", type=int, default=16)
 parser.add_argument("--lr", type=int, default=2e-5)
 parser.add_argument("--num_epochs", type=int, default=10)
+parser.add_argument("--seed", type=int, default=np.random.randint(0, 1000))
 args = parser.parse_args()
 
 
@@ -18,14 +18,8 @@ model_name = "xlm-mlm-17-1280"
 
 save_name = ""
 
-if args.cosine_schedule:
-    save_name = "scheduler"
-
 if args.discriminative_lr:
-    if save_name == "":
-        save_name = "discriminative-lr"
-    else:
-        save_name += "-AND-discriminative-lr"
+    save_name = "discriminative-lr"
 
 if save_name == "":
     save_name = "baseline"
@@ -39,8 +33,8 @@ label_all_tokens = True
 
 # File paths to splits of the chosen dataset
 file_paths = {
-    "train": "data/datasets/ewt/en_ewt_nn_train_newsgroup_and_weblogs.conll",
-    "validation": "data/datasets/ewt/en_ewt_nn_newsgroup_dev.conll",
+    "train": "data/datasets/NoSta-D/NER-de-train.tsv",
+    "validation": "data/datasets/NoSta-D/NER-de-dev.tsv",
 }
 
 # initialize trainer
@@ -49,8 +43,8 @@ trainer = TokenClassificationTrainer(task, model_name, save_name, batch_size, la
 # Training
 trainer.train_and_save(
     discriminate_lr = args.discriminative_lr, 
-    scheduler = args.cosine_schedule, 
     num_epochs=args.num_epochs, 
-    learning_rate=args.lr
+    learning_rate=args.lr,
+    seed=args.seed
     )
 
