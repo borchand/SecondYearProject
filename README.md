@@ -20,19 +20,16 @@ To recreate the model training, follow these steps:
         ```bash
         --discriminative_lr True
         ```
-    - Cosine scheduling:
-        ```bash
-        --cosine_schedule True
-        ```
     Example:
     ```bash
-    python3 train.py --discriminative_lr True --cosine_schedule True
+    python3 train.py --discriminative_lr True
     ```
 
 Other hyperparameters can be used by using the following arguments:
 - batch_size: `--batch_size`
 - learning_rate: `--lr`
 - epochs: `--epochs`
+- seed: `--seed`
 
 
 ## Recreating significance testing of models
@@ -76,11 +73,3 @@ Other hyperparameters can be used by using the following arguments:
 - batch_size: `--batch_size`
 - to_csv: `--to_csv` (default=True)
 - save_name: `--save_name` (This will override `--discriminative_lr` and `--cosine_schedule`)
-
-
-## Using our model
-Our fine-tuned models can be fund in the folder [zip_models](https://github.com/borchand/SecondYearProject/tree/main/zip_models). The models are named by their `save_name` and are compressed to zip files. In order to use the models run:
-```bash
-python3 unzip_models.py
-```
-This will create a folder called models. Each model will be named as `xlm-mlm-17-1280-finetuned-ner-{save-name}`. To run a specific model, the `save_name` needs to be set in the `TokenClassificationTrainer`.
