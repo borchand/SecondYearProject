@@ -3,7 +3,7 @@ import numpy as np
 from collections import Counter
 from utils import read_conll
 
-paths  = {'en': ['data/datasets/baseline/en_ewt_nn_train.conll', 'data/datasets/baseline/en_ewt_nn_newsgroup_test.conll', 'data/datasets/baseline/en_ewt_nn_newsgroup_dev.conll'], 
+paths  = {'en': ['data/datasets/ewt/en_ewt_nn_train.conll', 'data/datasets/ewt/en_ewt_nn_newsgroup_test.conll', 'data/datasets/ewt/en_ewt_nn_newsgroup_dev.conll'], 
                   'ger': "data/datasets/NoSta-D/NER-de-test.tsv", 
                   'dk': "data/datasets/DaNplus/da_news_test.tsv"}
 

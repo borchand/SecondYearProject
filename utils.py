@@ -323,7 +323,7 @@ def get_optimizer_params(model, learning_rate=5e-5, rate=0.6):
 if __name__ == '__main__':
     path_dict = {
         "train": "data/datasets/DaNplus/da_news_test.tsv",
-        "valid": "data/datasets/baseline/en_ewt_nn_train.conll",
+        "valid": "data/datasets/ewt/en_ewt_nn_train.conll",
         "test": "data/datasets/NoSta-D/NER-de-test.tsv",
     }
 

@@ -212,9 +212,9 @@ if __name__ == "__main__":
 
     # File paths to splits of the chosen dataset
     file_paths = {
-        "train": "data/datasets/baseline/en_ewt_nn_train.conll",
-        "validation": "data/datasets/baseline/en_ewt_nn_newsgroup_dev.conll",
-        "test": "data/datasets/baseline/en_ewt_nn_newsgroup_test.conll",
+        "train": "data/datasets/ewt/en_ewt_nn_train.conll",
+        "validation": "data/datasets/ewt/en_ewt_nn_newsgroup_dev.conll",
+        "test": "data/datasets/ewt/en_ewt_nn_newsgroup_test.conll",
     }
 
     tokenClassificationTrainer = TokenClassificationTrainer(task, model_name, batch_size, label_all_tokens, file_paths)

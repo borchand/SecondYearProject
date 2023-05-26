@@ -9,15 +9,15 @@ def eval(task, model_name, save_name, batch_size):
 
     # File paths to splits of the chosen dataset
     file_paths = {
-        "train": "data/datasets/baseline/en_ewt_nn_train_newsgroup_and_weblogs.conll",
-        "validation": "data/datasets/baseline/en_ewt_nn_dev_newsgroup_and_weblogs.conll",
+        "train": "data/datasets/ewt/en_ewt_nn_train_newsgroup_and_weblogs.conll",
+        "validation": "data/datasets/ewt/en_ewt_nn_dev_newsgroup_and_weblogs.conll",
     }
 
     trainer = TokenClassificationTrainer(task, model_name, save_name, batch_size, label_all_tokens, file_paths)
 
     # load trianed model to trainer
     trainer.set_trainer(use_old = True)
-    baseline_eval, NoStaD_eval, DaNplus_eval, Hungarian_eval  = trainer.evaluate_multiple(["data/datasets/baseline/en_ewt_nn_test_newsgroup_and_weblogs.conll", "data/datasets/NoSta-D/NER-de-test.tsv", "data/datasets/DaNplus/da_news_comb_test.tsv", "data/datasets/hungarian/hungarian_test.tsv"])
+    baseline_eval, NoStaD_eval, DaNplus_eval, Hungarian_eval  = trainer.evaluate_multiple(["data/datasets/ewt/en_ewt_nn_test_newsgroup_and_weblogs.conll", "data/datasets/NoSta-D/NER-de-test.tsv", "data/datasets/DaNplus/da_news_comb_test.tsv", "data/datasets/hungarian/hungarian_test.tsv"])
 
     cols = ["Dataset", "Language"] + [name for name, _ in baseline_eval.items()]
 
