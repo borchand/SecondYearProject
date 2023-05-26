@@ -83,7 +83,7 @@ def read_results(folder_path, metric="span_f1"):
     return results
 
 
-def evaluate_aso(path="new_baseline", metric="span_f1", seed=42, **kwargs):
+def evaluate_aso(path="eval_lists", metric="span_f1", seed=123, **kwargs):
 
     results = read_results(path, metric=metric)
     my_model_scores_per_dataset = []
@@ -101,7 +101,7 @@ def evaluate_aso(path="new_baseline", metric="span_f1", seed=42, **kwargs):
 
         # print(f"ASO: \n{aso_result}")
 
-    eps_min = [aso(a, b, confidence_level=0.95, num_comparisons=4, seed=seed) for a, b in zip(my_model_scores_per_dataset, baseline_scores_per_dataset)]
+    eps_min = [aso(b, a, confidence_level=0.95, num_comparisons=4, seed=seed) for a, b in zip(my_model_scores_per_dataset, baseline_scores_per_dataset)]
     print(f"eps_min: {eps_min}")
     return
 
@@ -109,9 +109,9 @@ def evaluate_aso(path="new_baseline", metric="span_f1", seed=42, **kwargs):
 def main():
     # pprint(read_results("pickled_evals"))
     # pprint(check_seeds())
-    evaluate_aso(metric="span_f1", seed=42)
+    evaluate_aso(metric="span_f1", seed=123)
 
-    results = read_results("new_baseline", metric="span_f1")
+    results = read_results("eval_lists", metric="span_f1")
 
     fig = plt.figure(figsize=(10, 10))
     for i, lang in enumerate(results.keys()):
