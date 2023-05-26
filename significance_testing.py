@@ -11,8 +11,8 @@ from deepsig import aso, multi_aso
 def check_seeds():
 
     paths = {
-        "Baseline": "list_baseline_new",
-        "Discriminate": "list_discriminate_lr_new",
+        "Baseline": "list_baseline",
+        "Discriminate": "list_discriminate_lr",
     }
 
     seeds = dict()
@@ -35,8 +35,8 @@ def check_seeds():
 def read_results(folder_path, metric="span_f1"):
     # Use glob to get all files in path
     paths = {
-        "Baseline": "list_baseline_new",
-        "Discriminate": "list_discriminate_lr_new",
+        "Baseline": "list_baseline",
+        "Discriminate": "list_discriminate_lr",
     }
 
     results = {
@@ -83,20 +83,26 @@ def read_results(folder_path, metric="span_f1"):
     return results
 
 
-def evaluate_aso(path="new_evals", metric="span_f1", seed=42, **kwargs):
+def evaluate_aso(path="new_baseline", metric="span_f1", seed=42, **kwargs):
 
     results = read_results(path, metric=metric)
-
+    my_model_scores_per_dataset = []
+    baseline_scores_per_dataset = []
     for lang in results.keys():
         print(f"Language: {lang}")
         
         for name, result in results[lang].items():
-            print(f"{name}: {np.mean(result)}")
-        
-        aso_result = aso(results[lang]['Discriminate'], results[lang]['Baseline'], confidence_level=0.9875, seed=seed, **kwargs)
+            print(f"{name}: {np.mean(result):.4f} +- {np.std(result): .4f}")
+        print((np.mean(results[lang]['Baseline']) -  np.mean(results[lang]['Discriminate'])) / np.mean(results[lang]['Baseline']) * 100)
+        my_model_scores_per_dataset.append(results[lang]['Discriminate'])
+        baseline_scores_per_dataset.append(results[lang]['Baseline'])
 
-        print(f"ASO: \n{aso_result}")
-    
+        # aso_result = aso(results[lang]['Discriminate'], results[lang]['Baseline'], confidence_level=0.9875, seed=seed, **kwargs)
+
+        # print(f"ASO: \n{aso_result}")
+
+    eps_min = [aso(a, b, confidence_level=0.95, num_comparisons=4, seed=seed) for a, b in zip(my_model_scores_per_dataset, baseline_scores_per_dataset)]
+    print(f"eps_min: {eps_min}")
     return
 
 
@@ -105,7 +111,7 @@ def main():
     # pprint(check_seeds())
     evaluate_aso(metric="span_f1", seed=42)
 
-    results = read_results("new_evals", metric="span_f1")
+    results = read_results("new_baseline", metric="span_f1")
 
     fig = plt.figure(figsize=(10, 10))
     for i, lang in enumerate(results.keys()):
