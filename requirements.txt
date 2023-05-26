@@ -43,7 +43,7 @@ multidict==6.0.4
 multiprocess==0.70.14
 nest-asyncio==1.5.6
 networkx==3.0
-numpy==1.24.0
+numpy==1.24.3
 packaging==23.0
 pandas==1.5.3
 parso==0.8.3
@@ -70,6 +70,7 @@ responses==0.18.0
 sacremoses==0.0.53
 scikit-learn==1.2.2
 scipy==1.10.1
+seaborn==0.12.2
 sentencepiece==0.1.98
 seqeval==1.2.2
 six==1.16.0
