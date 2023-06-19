@@ -1,0 +1,308 @@
+kisses	O	O
+
+leli	B-PER	B-PER
+
+pairing	O	O
+up	O	O
+of	O	O
+harry	B-PER	B-PER
+and	O	O
+ginny	O	B-PER
+is	O	O
+cool	O	O
+
+Animal	B-ORG	B-ORG
+News	I-ORG	I-ORG
+Center	I-ORG	I-ORG
+Webmaster	O	O
+
+Regards	O	O
+
+Swetha	B-PER	B-PER
+
+Heterosexuals	O	O
+increasingly	O	O
+back	O	O
+gay	O	O
+marriage	O	O
+
+Deb	B-ORG	B-PER
+Price	I-MISC	I-PER
+
+*	O	O
+
+**	O	O
+
+**	O	O
+
+--	O	O
+
+Thanks	O	O
+and	O	O
+Regard	O	O
+
+Rajendra	B-PER	B-PER
+
+rajendra.o...@gmail.com	B-MISC	B-PER
+
+image_gif_part	O	B-MISC
+
+81	O	O
+K	O	O
+Download	O	O
+
+..	O	O
+
+Reply	O	O
+
+Please	O	O
+do	O	O
+visit	O	O
+us	O	O
+and	O	O
+feel	O	O
+free	O	O
+to	O	O
+browse	O	O
+the	O	O
+site	O	O
+at	O	O
+www.southbhamcats.org.uk	B-MISC	B-MISC
+
+Thanks	O	O
+for	O	O
+looking	O	O
+
+Key	O	O
+Delhi	B-LOC	B-LOC
+blast	O	O
+suspect	O	O
+arrested	O	O
+
+The	O	O
+India	B-LOC	B-MISC
+Diaries	I-ORG	I-MISC
+
+Portia	B-PER	B-PER
+
+Cindy	B-PER	B-PER
+
+Inhibitory	O	O
+Systems	O	O
+Control	O	O
+the	O	O
+Pattern	O	O
+of	O	O
+Activity	O	O
+in	O	O
+the	O	O
+Cortex	O	O
+
+--	O	O
+
+Posted	O	O
+by	O	O
+Anthony	B-PER	B-PER
+Beavers	I-PER	I-PER
+to	O	O
+Cognitive	B-MISC	B-MISC
+Science	I-ORG	I-MISC
+News	I-ORG	I-MISC
+at	O	O
+8/28/2005	O	O
+07:18:20	O	O
+AM	O	O
+
+**	O	O
+
+http://reflectioncafe.blogspot.com/2005/09/unnatural-disasterthe-less...	O	B-MISC
+
+http://news.bbc.co.uk/1/hi/help/4162471.stm	O	B-MISC
+
+--	O	O
+
+Posted	O	O
+by	O	O
+Hidden	O	B-PER
+Nook	O	I-PER
+to	O	O
+Hidden	O	B-MISC
+Nook	O	I-MISC
+at	O	O
+11/20/2004	O	O
+03:10:35	O	O
+PM	O	O
+
+My	O	O
+wife	O	O
+and	O	O
+I	O	O
+would	O	O
+love	O	O
+for	O	O
+you	O	O
+to	O	O
+come	O	O
+and	O	O
+visit	O	O
+our	O	O
+page	O	O
+
+http://www.myshutter.com/flash.htm	O	B-MISC
+our	O	O
+collection	O	O
+of	O	O
+comedy	O	O
+
+732-657-3416	O	O
+
+732-657-3416	O	O
+
+Wei	B-PER	B-PER
+'s	O	I-PER
+Magic	O	O
+Cubes	O	O
+
+Photo	O	O
+from	O	O
+Technology	B-ORG	B-ORG
+News	I-ORG	I-ORG
+
+But	O	O
+it	O	O
+looks	O	O
+like	O	O
+Google	B-ORG	B-ORG
+is	O	O
+n't	O	O
+opening	O	O
+it's	O	O
+mouth	O	O
+about	O	O
+the	O	O
+reason	O	O
+behind	O	O
+the	O	O
+offer	O	O
+as	O	O
+Linux	O	B-ORG
+News	O	I-ORG
+reports	B-MISC	O
+:	B-MISC	O
+
+--	O	O
+
+Posted	O	O
+by	O	O
+Hidden	O	B-PER
+Nook	O	I-PER
+to	O	O
+Hidden	O	B-MISC
+Nook	O	I-MISC
+at	O	O
+2/14/2005	O	O
+07:03:00	O	O
+PM	O	O
+
+Hello	O	O
+there	O	O
+
+Kind	O	O
+regards	O	O
+
+Ruth	B-PER	B-PER
+Penycate	I-PER	I-PER
+www.bbc.co.uk/actionnetwork	B-MISC	B-MISC
+
+Photo	O	O
+from	O	O
+Space.com	B-MISC	B-MISC
+
+--	O	O
+
+Posted	O	O
+by	O	O
+Hidden	O	B-PER
+Nook	O	I-PER
+to	O	O
+Hidden	O	B-MISC
+Nook	O	I-MISC
+at	O	O
+2/15/2005	O	O
+05:12:00	O	O
+PM	O	O
+
+--	O	O
+
+Posted	O	O
+by	O	O
+Hidden	O	B-PER
+Nook	O	I-PER
+to	O	O
+Hidden	O	B-MISC
+Nook	O	I-MISC
+at	O	O
+8/30/2005	O	O
+09:36:00	O	O
+PM	O	O
+
+George	B-PER	B-PER
+and	O	O
+Lynne	B-PER	B-PER
+
+image001.jpg	O	B-MISC
+
+51	O	O
+K	O	O
+Download	O	O
+
+Funny	O	O
+stuff	O	O
+
+lifted	O	O
+from	O	O
+another	O	O
+list	O	O
+
+------	O	O
+
+------	O	O
+
+------	O	O
+
+------	O	O
+
+------	O	O
+
+------	O	O
+
+------	O	O
+
+------	O	O
+
+------	O	O
+
+------	O	O
+
+------	O	O
+
+------	O	O
+
+------	O	O
+
+------	O	O
+
+__________________________________________________	O	O
+
+image_jpg_part	O	B-MISC
+
+52	O	O
+K	O	O
+Download	O	O
+
+See	O	O
+http://www.gulf-news.com/Articles/news.asp?ArticleID=97508	O	B-MISC
+
+...	O	O
+
+
