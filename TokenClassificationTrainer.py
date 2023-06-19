@@ -5,6 +5,7 @@ import os
 from typing import Dict
 
 import matplotlib.pyplot as plt
+import numpy as np
 import transformers
 from evaluate import load as load_metric
 from torch.optim import AdamW
@@ -14,7 +15,7 @@ from transformers import (
     DataCollatorForTokenClassification,
     EarlyStoppingCallback,
     Trainer,
-    TrainingArguments
+    TrainingArguments,
 )
 
 from utils import (
@@ -205,21 +206,60 @@ if __name__ == "__main__":
     # Set the task and name of the pretrained model and the batch size for finetuning
     task = "ner"
     model_name = "xlm-mlm-17-1280"  # "bert-base-multilingual-cased" or "xlm-mlm-17-1280"
+    seed = 57808
+    save_name = "discriminate-lr.seed-" + str(seed)
     batch_size = 32
 
     # Flag to indicate whether to label all tokens or just the first token of each word
-    label_all_tokens = True
+    label_all_tokens = False
 
     # File paths to splits of the chosen dataset
     file_paths = {
         "train": "data/datasets/ewt/en_ewt_nn_train.conll",
         "validation": "data/datasets/ewt/en_ewt_nn_newsgroup_dev.conll",
-        "test": "data/datasets/ewt/en_ewt_nn_newsgroup_test.conll",
+        "test": "data/datasets/ewt/en_ewt_nn_test_newsgroup_and_weblogs.conll",
     }
 
-    tokenClassificationTrainer = TokenClassificationTrainer(task, model_name, batch_size, label_all_tokens, file_paths)
+    # Load the tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+    # Load the datasets into a DatasetDict
+    datasets = load_into_datasetdict(file_paths)
+    tokenized_datasets = datasets.map(lambda examples: tokenize_and_align_labels(examples=examples, tokenizer=tokenizer, label_all_tokens=label_all_tokens, fast=False), batched=True)
+
+    tokenClassificationTrainer = TokenClassificationTrainer(task, model_name, save_name, batch_size, label_all_tokens, file_paths)
 
     # load trianed model to trainer
-    tokenClassificationTrainer.set_trainer(use_old = False)
-    # print(tokenClassificationTrainer.evaluate())
+    tokenClassificationTrainer.set_trainer(use_old = True)
 
+    # Evaluate on the test set
+
+    # Get the label names from the datasets
+    label_list = datasets["train"].features["tags"].feature.names
+
+    # Save to preds.conll
+    predictions, labels = tokenClassificationTrainer.predict(file_paths["test"])
+    predictions = np.argmax(predictions, axis=2)
+
+    # Remove ignored index (special tokens)
+    true_predictions = [
+        [label_list[p] for (p, l) in zip(prediction, label) if l != -100]
+        for prediction, label in zip(predictions, labels)
+    ]
+    true_labels = [
+        [label_list[l] for (p, l) in zip(prediction, label) if l != -100]
+        for prediction, label in zip(predictions, labels)
+    ]
+
+
+    with open("preds.conll", "w") as f:
+        for sent, preds, labels in zip(tokenized_datasets["test"]["tokens"], true_predictions, true_labels):
+            if len(sent) != len(preds) or len(sent) != len(labels):
+                print("Error: Lengths do not match")
+                print(sent)
+                print(preds)
+                print(labels)
+            for word, pred, label in zip(sent, preds, labels):
+                msg = f"{word}\t{pred}\t{label}\n"
+                f.write(msg)
+            f.write("\n")
