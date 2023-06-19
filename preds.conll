@@ -1,6 +1,39 @@
+Hi	O	O
+I	O	O
+´m	O	O
+from	O	O
+Brazil	B-LOC	B-LOC
+and	O	O
+I	O	O
+want	O	O
+to	O	O
+know	O	O
+of	O	O
+book	O	O
+06	O	O
+
+Is	O	O
+good	O	O
+or	O	O
+bad	O	O
+
+what	O	O
+'s	O	O
+your	O	O
+opinion	O	O
+
 kisses	O	O
 
 leli	B-PER	B-PER
+
+it	O	O
+s	O	O
+good	O	O
+
+u	O	O
+must	O	O
+read	O	O
+it	O	O
 
 pairing	O	O
 up	O	O
@@ -11,10 +44,40 @@ ginny	O	B-PER
 is	O	O
 cool	O	O
 
+It	O	O
+s	O	O
+awesome	O	O
+better	O	O
+than	O	O
+book	O	O
+5	O	O
+
 Animal	B-ORG	B-ORG
 News	I-ORG	I-ORG
 Center	I-ORG	I-ORG
 Webmaster	O	O
+
+Hello	O	O
+
+We	O	O
+look	O	O
+forward	O	O
+to	O	O
+your	O	O
+active	O	O
+participation	O	O
+to	O	O
+make	O	O
+this	O	O
+forum	O	O
+an	O	O
+exciting	O	O
+meeting	O	O
+place	O	O
+for	O	O
+like	O	O
+minded	O	O
+individuals	O	O
 
 Regards	O	O
 
@@ -29,9 +92,10 @@ marriage	O	O
 Deb	B-ORG	B-PER
 Price	I-MISC	I-PER
 
-*	O	O
-
 **	O	O
+
+Good	O	O
+Morning	I-MISC	O
 
 **	O	O
 
@@ -79,13 +143,70 @@ blast	O	O
 suspect	O	O
 arrested	O	O
 
+Police	O	O
+in	O	O
+the	O	O
+Indian	B-LOC	B-LOC
+capital	O	O
+Delhi	B-LOC	B-LOC
+say	O	O
+they	O	O
+have	O	O
+arrested	O	O
+the	O	O
+suspected	O	O
+co-ordinator	O	O
+and	O	O
+financier	O	O
+of	O	O
+last	O	O
+month	O	O
+'s	O	O
+deadly	O	O
+bomb	O	O
+blasts	O	O
+in	O	O
+the	O	O
+city	O	O
+
 The	O	O
 India	B-LOC	B-MISC
 Diaries	I-ORG	I-MISC
 
 Portia	B-PER	B-PER
 
+This	O	O
+is	O	O
+a	O	O
+beautiful	O	O
+site	O	O
+and	O	O
+a	O	O
+wonderful	O	O
+idea	O	O
+
+And	O	O
+a	O	O
+portion	O	O
+of	O	O
+each	O	O
+package	O	O
+or	O	O
+memorial	O	O
+purchased	O	O
+goes	O	O
+to	O	O
+a	O	O
+charity	O	O
+on	O	O
+their	O	O
+database	O	O
+
+Best	O	O
+
 Cindy	B-PER	B-PER
+
+CGoehring	O	O
 
 Inhibitory	O	O
 Systems	O	O
@@ -115,9 +236,164 @@ AM	O	O
 
 **	O	O
 
+Alteration	O	O
+of	O	O
+the	O	O
+Mississippi	B-LOC	B-LOC
+River	I-LOC	I-LOC
+and	O	O
+the	O	O
+destruction	O	O
+of	O	O
+wetlands	O	O
+at	O	O
+its	O	O
+mouth	O	O
+have	O	O
+left	O	O
+the	O	O
+area	O	O
+around	O	O
+New	B-LOC	B-LOC
+Orleans	I-LOC	I-LOC
+abnormally	O	O
+vulnerable	O	O
+to	O	O
+the	O	O
+forces	O	O
+of	O	O
+nature	O	O
+
+...	O	O
+
 http://reflectioncafe.blogspot.com/2005/09/unnatural-disasterthe-less...	O	B-MISC
 
+n3td3v	O	B-PER
+saw	O	O
+this	O	O
+story	O	O
+on	O	O
+BBC	B-ORG	B-MISC
+News	I-ORG	I-MISC
+Online	I-ORG	I-MISC
+and	O	O
+thought	O	O
+you	O	O
+should	O	O
+see	O	O
+it	O	O
+
+Web	O	O
+giant	O	O
+Google	B-ORG	B-ORG
+is	O	O
+resisting	O	O
+an	O	O
+attempt	O	O
+by	O	O
+the	O	O
+US	B-LOC	B-ORG
+to	O	O
+force	O	O
+it	O	O
+to	O	O
+reveal	O	O
+what	O	O
+users	O	O
+are	O	O
+searching	O	O
+for	O	O
+
+http://news.bbc.co.uk/go/em/fr/-/1/hi/technology/4630694.stm	O	O
+
+http://www.bbc.co.uk/dailyemail/	O	O
+
+Please	O	O
+note	O	O
+that	O	O
+neither	O	O
+the	O	O
+e-mail	O	O
+address	O	O
+nor	O	O
+name	O	O
+of	O	O
+the	O	O
+sender	O	O
+have	O	O
+been	O	O
+verified	O	O
+
 http://news.bbc.co.uk/1/hi/help/4162471.stm	O	B-MISC
+
+http://www.reuters.co.uk/newsPackageArticle.jhtml?type=worldNews&storyID=624569&section=news	O	O
+
+The	O	O
+talk	O	O
+of	O	O
+the	O	O
+day	O	O
+besides	O	O
+a	O	O
+more	O	O
+level	O	O
+playing	O	O
+field	O	O
+with	O	O
+China	B-LOC	B-ORG
+was	O	O
+North	B-LOC	B-ORG
+Korea	I-LOC	I-ORG
+
+China	B-LOC	B-ORG
+has	O	O
+been	O	O
+a	O	O
+great	O	O
+help	O	O
+at	O	O
+getting	O	O
+North	B-LOC	B-ORG
+Korea	I-LOC	I-ORG
+to	O	O
+the	O	O
+table	O	O
+and	O	O
+Bush	O	B-PER
+is	O	O
+hoping	O	O
+that	O	O
+with	O	O
+their	O	O
+cooperation	O	O
+Korea	O	B-ORG
+can	B-LOC	O
+become	O	O
+a	O	O
+nuclear	O	O
+free	O	O
+peninsula	O	O
+
+U.S.	B-LOC	B-LOC
+President	O	O
+George	B-PER	B-PER
+W.	I-PER	I-PER
+Bush	I-PER	I-PER
+shakes	O	O
+hands	O	O
+with	O	O
+Chinese	B-LOC	B-LOC
+President	O	O
+Hu	O	B-PER
+Jintao	O	I-PER
+in	O	O
+a	O	O
+bilateral	O	O
+meeting	O	O
+in	O	O
+Santiago	B-LOC	B-LOC
+
+Selah	O	O
 
 --	O	O
 
@@ -132,6 +408,72 @@ at	O	O
 11/20/2004	O	O
 03:10:35	O	O
 PM	O	O
+
+I	O	O
+started	O	O
+this	O	O
+page	O	O
+to	O	O
+help	O	O
+with	O	O
+my	O	O
+boredom	O	O
+
+I	O	O
+enjoyed	O	O
+the	O	O
+animations	O	O
+and	O	O
+wanted	O	O
+to	O	O
+share	O	O
+them	O	O
+with	O	O
+my	O	O
+friends	O	O
+
+So	O	O
+I	O	O
+started	O	O
+a	O	O
+small	O	O
+mailing	O	O
+list	O	O
+and	O	O
+added	O	O
+their	O	O
+addresses	O	O
+to	O	O
+it	O	O
+
+Along	O	O
+with	O	O
+an	O	O
+area	O	O
+on	O	O
+the	O	O
+page	O	O
+for	O	O
+those	O	O
+to	O	O
+join	O	O
+the	O	O
+mailing	O	O
+list	O	O
+
+I	O	O
+started	O	O
+with	O	O
+21	O	O
+email	O	O
+addresses	O	O
+
+We	O	O
+now	O	O
+have	O	O
+over	O	O
+5000	O	O
+addresses	O	O
 
 My	O	O
 wife	O	O
@@ -156,39 +498,143 @@ comedy	O	O
 
 732-657-3416	O	O
 
+People	O	O
+love	O	O
+to	O	O
+buy	O	O
+these	O	O
+cute	O	O
+cuddly	O	O
+little	O	O
+animals	O	O
+for	O	O
+gifts	O	O
+and	O	O
+collectables	O	O
+
+They	O	O
+are	O	O
+very	O	O
+well	O	O
+made	O	O
+and	O	O
+realistic	O	O
+
+We	O	O
+are	O	O
+looking	O	O
+to	O	O
+expand	O	O
+our	O	O
+Wholesale	O	O
+Clients	O	O
+across	O	O
+the	O	O
+Nation	O	O
+
 732-657-3416	O	O
+
+We	O	O
+have	O	O
+a	O	O
+Full	O	O
+Color	O	O
+Catalog	O	O
+and	O	O
+Wholesale	O	O
+Price	O	O
+List	O	O
+ready	O	O
+to	O	O
+mail	O	O
+to	O	O
+you	O	O
+today	O	O
+
+No	O	O
+minimum	O	O
+order	O	O
+amount	O	O
 
 Wei	B-PER	B-PER
 's	O	I-PER
 Magic	O	O
 Cubes	O	O
 
+He	O	O
+is	O	O
+now	O	O
+lecturing	O	O
+in	O	O
+USA	B-LOC	B-LOC
+
+His	O	O
+art	O	O
+perfectly	O	O
+combines	O	O
+painting	O	O
+and	O	O
+Chinese	B-LOC	B-LOC
+calligraphy	O	O
+
+His	O	O
+artworks	O	O
+were	O	O
+selected	O	O
+and	O	O
+exhibited	O	O
+in	O	O
+British	B-ORG	B-ORG
+Museum	I-ORG	I-ORG
+in	O	O
+2002	O	O
+
+http://news.zdnet.co.uk/internet/0,39020369,39187928,00.htm	O	O
+
 Photo	O	O
 from	O	O
 Technology	B-ORG	B-ORG
 News	I-ORG	I-ORG
 
-But	O	O
-it	O	O
+ZD	O	O
+Net	O	B-ORG
+
+It	O	O
 looks	O	O
 like	O	O
+the	O	O
+war	O	O
+between	O	O
+Microsoft	B-ORG	B-ORG
+and	O	O
 Google	B-ORG	B-ORG
 is	O	O
-n't	O	O
-opening	O	O
+quickly	O	O
+brewing	O	O
+on	O	O
+the	O	O
+horizon	O	O
+
+Google	B-ORG	B-ORG
+is	O	O
+probably	O	O
+making	O	O
+this	O	O
+move	O	O
+to	O	O
+counter	O	O
+Microsoft	B-MISC	B-MISC
+Search	I-MISC	I-MISC
+using	O	O
+Encarta	B-MISC	B-MISC
 it's	O	O
-mouth	O	O
-about	O	O
-the	O	O
-reason	O	O
-behind	O	O
-the	O	O
-offer	O	O
-as	O	O
-Linux	O	B-ORG
-News	O	I-ORG
-reports	B-MISC	O
-:	B-MISC	O
+online	O	O
+dictionary	O	O
+
+More	O	O
+below	O	O
+
+Selah	O	O
 
 --	O	O
 
@@ -207,6 +653,103 @@ PM	O	O
 Hello	O	O
 there	O	O
 
+Action	I-ORG	B-MISC
+Network	I-ORG	I-MISC
+is	O	O
+a	O	O
+BBC	B-ORG	B-ORG
+website	O	O
+for	O	O
+people	O	O
+who	O	O
+are	O	O
+taking	O	O
+action	O	O
+on	O	O
+issues	O	O
+that	O	O
+concern	O	O
+them	O	O
+
+I	O	O
+'m	O	O
+getting	O	O
+in	O	O
+touch	O	O
+because	O	O
+I	O	O
+think	O	O
+it	O	O
+could	O	O
+be	O	O
+useful	O	O
+to	O	O
+people	O	O
+campaigning	O	O
+about	O	O
+hospital	O	O
+closures	O	O
+
+I	O	O
+'m	O	O
+hoping	O	O
+to	O	O
+build	O	O
+this	O	O
+up	O	O
+to	O	O
+be	O	O
+a	O	O
+hub	O	O
+for	O	O
+all	O	O
+the	O	O
+campaigners	O	O
+a	O	O
+place	O	O
+where	O	O
+people	O	O
+can	O	O
+exchange	O	O
+ideas	O	O
+and	O	O
+advice	O	O
+
+It	O	O
+would	O	O
+be	O	O
+great	O	O
+if	O	O
+the	O	O
+person	O	O
+from	O	O
+CHANT	O	B-ORG
+who	B-ORG	O
+started	O	O
+this	O	O
+page	O	O
+would	O	O
+put	O	O
+up	O	O
+a	O	O
+short	O	O
+description	O	O
+of	O	O
+the	O	O
+campaign	O	O
+and	O	O
+a	O	O
+list	O	O
+to	O	O
+this	O	O
+group	O	O
+page	O	O
+on	O	O
+the	O	O
+Action	O	B-MISC
+Network	O	I-MISC
+site	O	O
+
 Kind	O	O
 regards	O	O
 
@@ -214,9 +757,50 @@ Ruth	B-PER	B-PER
 Penycate	I-PER	I-PER
 www.bbc.co.uk/actionnetwork	B-MISC	B-MISC
 
+Winston	B-PER	B-PER
+Peters	I-PER	I-PER
+is	O	O
+visiting	O	O
+a	O	O
+school	O	O
+
+A	O	O
+girl	O	O
+raises	O	O
+her	O	O
+hand	O	O
+
+Marvelous	O	O
+
+And	O	O
+can	O	O
+you	O	O
+tell	O	O
+me	O	O
+WHY	O	O
+that	O	O
+would	O	O
+be	O	O
+a	O	O
+tragedy	O	O
+
+http://www.space.com/astronotes/astronotes.html	O	O
+
 Photo	O	O
 from	O	O
 Space.com	B-MISC	B-MISC
+
+Space.com	O	O
+
+This	O	O
+group	O	O
+does	O	O
+sound	O	O
+pretty	O	O
+interesting	O	O
+though	O	O
+
+Selah	O	O
 
 --	O	O
 
@@ -231,6 +815,44 @@ at	O	O
 2/15/2005	O	O
 05:12:00	O	O
 PM	O	O
+
+http://www.space.com/missionlaunches/ft_050829_ksc_spacefuture.html	O	O
+
+Space.com	O	O
+
+The	O	O
+new	O	O
+rocket	O	O
+design	O	O
+will	O	O
+differ	O	O
+slightly	O	O
+from	O	O
+it's	O	O
+predecessors	O	O
+in	O	O
+the	O	O
+fact	O	O
+that	O	O
+the	O	O
+crew	O	O
+and	O	O
+cargo	O	O
+would	O	O
+launch	O	O
+separately	O	O
+from	O	O
+two	O	O
+different	O	O
+rockets	O	O
+each	O	O
+and	O	O
+join	O	O
+up	O	O
+in	O	O
+space	O	O
+later	O	O
+on	O	O
 
 --	O	O
 
@@ -266,33 +888,216 @@ list	O	O
 
 ------	O	O
 
-------	O	O
+We	O	O
+could	O	O
+certainly	O	O
+slow	O	O
+the	O	O
+aging	O	O
+process	O	O
+down	O	O
+if	O	O
+it	O	O
+had	O	O
+to	O	O
+work	O	O
+its	O	O
+way	O	O
+through	O	O
+Congress	O	B-ORG
+
+Will	O	O
+Rogers	I-PER	B-PER
+
+I	O	O
+had	O	O
+a	O	O
+rose	O	O
+named	O	O
+after	O	O
+me	O	O
+and	O	O
+I	O	O
+was	O	O
+very	O	O
+flattered	O	O
+
+Eleanor	I-PER	O
+Roosevelt	I-PER	B-PER
 
 ------	O	O
 
-------	O	O
+Santa	O	B-PER
+Claus	O	I-PER
+has	O	O
+the	O	O
+right	O	O
+idea	O	O
+
+Visit	O	O
+people	O	O
+only	O	O
+once	O	O
+a	O	O
+year	O	O
+
+Victor	I-PER	O
+Borge	B-PER	B-PER
 
 ------	O	O
 
-------	O	O
+Socrates	B-ORG	O
 
 ------	O	O
 
-------	O	O
+I	O	O
+was	O	O
+married	O	O
+by	O	O
+a	O	O
+judge	O	O
+
+I	O	O
+should	O	O
+have	O	O
+asked	O	O
+for	O	O
+a	O	O
+jury	O	O
+
+Groucho	O	O
+Marx	B-PER	B-PER
 
 ------	O	O
 
-------	O	O
+My	O	O
+wife	O	O
+has	O	O
+a	O	O
+slight	O	O
+impediment	O	O
+in	O	O
+her	O	O
+speech	O	O
+
+Every	O	O
+now	O	O
+and	O	O
+then	O	O
+she	O	O
+stops	O	O
+to	O	O
+breathe	O	O
+
+Jimmy	O	O
+Durante	B-PER	B-PER
 
 ------	O	O
 
-------	O	O
+I	O	O
+have	O	O
+never	O	O
+hated	O	O
+a	O	O
+man	O	O
+enough	O	O
+to	O	O
+give	O	O
+his	O	O
+diamonds	O	O
+back	O	O
+
+Zsa	O	O
+Zsa	B-ORG	B-PER
+Gabor	I-ORG	I-PER
 
 ------	O	O
 
+Alex	I-PER	O
+Levine	B-PER	B-PER
+
 ------	O	O
+
+Spike	O	O
+Milligan	B-PER	B-PER
+
+------	O	O
+
+Joe	I-PER	O
+Namath	B-PER	B-PER
+
+------	O	O
+
+Youth	O	O
+would	O	O
+be	O	O
+an	O	O
+ideal	O	O
+state	O	O
+if	O	O
+it	O	O
+came	O	O
+a	O	O
+little	O	O
+later	O	O
+in	O	O
+life	O	O
+
+Herbert	I-PER	O
+Henry	I-PER	B-PER
+Asquith	I-PER	I-PER
+
+------	O	O
+
+I	O	O
+do	O	O
+n't	O	O
+feel	O	O
+old	O	O
+
+I	O	O
+do	O	O
+n't	O	O
+feel	O	O
+anything	O	O
+until	O	O
+noon	O	O
+
+Then	O	O
+it	O	O
+'s	O	O
+time	O	O
+for	O	O
+my	O	O
+nap	O	O
+
+Bob	O	O
+Hope	B-PER	B-PER
+
+------	O	O
+
+Winston	O	O
+Churchill	B-PER	B-PER
+
+------	O	O
+
+Phyllis	I-PER	O
+Diller	B-PER	B-PER
+
+------	O	O
+
+Billy	O	O
+Crystal	B-PER	B-PER
 
 __________________________________________________	O	O
+
+Do	O	O
+You	O	O
+Yahoo!	B-ORG	B-ORG
+
+Tired	O	O
+of	O	O
+spam	O	O
 
 image_jpg_part	O	B-MISC
 
@@ -300,9 +1105,1024 @@ image_jpg_part	O	B-MISC
 K	O	O
 Download	O	O
 
+What	O	O
+if	O	O
+Google	B-ORG	B-ORG
+Morphed	O	O
+Into	O	O
+GoogleOS	B-MISC	B-LOC
+
+via	O	O
+Microsoft	O	O
+Watch	B-ORG	B-MISC
+from	I-MISC	I-MISC
+Mary	O	O
+Jo	O	B-PER
+Foley	B-PER	I-PER
+
+Google	B-ORG	B-ORG
+is	O	O
+a	O	O
+nice	O	O
+search	O	O
+engine	O	O
+
+Does	O	O
+anybody	O	O
+use	O	O
+it	O	O
+for	O	O
+anything	O	O
+else	O	O
+
+Is	O	O
+that	O	O
+a	O	O
+money	O	O
+maker	O	O
+
+I	O	O
+'m	O	O
+staying	O	O
+away	O	O
+from	O	O
+the	O	O
+stock	O	O
+
+Click	O	O
+here	O	O
+To	O	O
+view	O	O
+it	O	O
+
+He	O	O
+makes	O	O
+some	O	O
+good	O	O
+observations	O	O
+on	O	O
+a	O	O
+few	O	O
+of	O	O
+the	O	O
+pic's	O	O
+
+One	O	O
+of	O	O
+the	O	O
+pictures	O	O
+shows	O	O
+a	O	O
+flag	O	O
+that	O	O
+was	O	O
+found	O	O
+in	O	O
+Fallujah	O	B-LOC
+
+On	O	O
+the	O	O
+next	O	O
+two	O	O
+pictures	O	O
+he	O	O
+took	O	O
+screenshots	O	O
+of	O	O
+two	O	O
+beheading	O	O
+video's	O	O
+
+Compare	O	O
+the	O	O
+flags	O	O
+to	O	O
+the	O	O
+Fallujah	O	B-LOC
+one	O	O
+
+This	O	O
+Fallujah	O	B-LOC
+operation	O	O
+my	O	O
+turn	O	O
+out	O	O
+to	O	O
+be	O	O
+the	O	O
+most	O	O
+important	O	O
+operation	O	O
+done	O	O
+by	O	O
+the	O	O
+US	B-LOC	B-LOC
+Military	O	O
+since	O	O
+the	O	O
+end	O	O
+of	O	O
+the	O	O
+war	O	O
+
+Iran	B-LOC	B-ORG
+says	O	O
+it	O	O
+is	O	O
+creating	O	O
+nuclear	O	O
+energy	O	O
+without	O	O
+wanting	O	O
+nuclear	O	O
+weapons	O	O
+
+The	O	O
+United	B-LOC	B-ORG
+States	I-LOC	I-ORG
+does	O	O
+n't	O	O
+believe	O	O
+the	O	O
+Iranian	B-LOC	B-LOC
+Government	O	O
+
+One	O	O
+can	O	O
+suspect	O	O
+the	O	O
+Iranian	B-LOC	B-LOC
+Government	O	O
+
+But	O	O
+there	O	O
+is	O	O
+no	O	O
+proof	O	O
+
+I	O	O
+read	O	O
+an	O	O
+Article	O	O
+in	O	O
+Time	B-ORG	B-ORG
+magazine	I-ORG	I-ORG
+accusing	O	O
+the	O	O
+Iranian	B-LOC	B-LOC
+Government	B-LOC	O
+of	O	O
+being	O	O
+willing	O	O
+to	O	O
+start	O	O
+a	O	O
+nuclear	O	O
+war	O	O
+and	O	O
+I	O	O
+sympathise	O	O
+with	O	O
+the	O	O
+Article	O	O
+
+They	O	O
+are	O	O
+certainly	O	O
+being	O	O
+nasty	O	O
+to	O	O
+the	O	O
+United	B-ORG	B-ORG
+Nations	I-ORG	I-ORG
+Security	I-ORG	I-ORG
+Council	I-ORG	I-ORG
+in	O	O
+connection	O	O
+with	O	O
+the	O	O
+anti-proliferation	O	O
+treaty	O	O
+
+The	O	O
+President	O	O
+has	O	O
+also	O	O
+said	O	O
+he	O	O
+would	O	O
+like	O	O
+to	O	O
+see	O	O
+Israel	B-LOC	B-LOC
+wiped	O	O
+off	O	O
+the	O	O
+map	O	O
+which	O	O
+he	O	O
+could	O	O
+n't	O	O
+even	O	O
+begin	O	O
+to	O	O
+try	O	O
+without	O	O
+nuclear	O	O
+weapons	O	O
+
+But	O	O
+he	O	O
+has	O	O
+insisted	O	O
+that	O	O
+he	O	O
+wants	O	O
+nuclear	O	O
+power	O	O
+for	O	O
+peaceful	O	O
+purposes	O	O
+
+Many	O	O
+people	O	O
+want	O	O
+to	O	O
+use	O	O
+diplomacy	O	O
+with	O	O
+Iran	B-LOC	B-ORG
+rather	O	O
+than	O	O
+military	O	O
+pressure	O	O
+
+But	O	O
+will	O	O
+diplomacy	O	O
+work	O	O
+
+And	O	O
+can	O	O
+anyone	O	O
+use	O	O
+military	O	O
+pressure	O	O
+without	O	O
+proof	O	O
+
+One	O	O
+reader	O	O
+pointed	O	O
+out	O	O
+that	O	O
+the	O	O
+President	O	O
+watched	O	O
+the	O	O
+Americans	B-LOC	B-LOC
+in	B-LOC	O
+the	O	O
+embassy	O	O
+when	O	O
+they	O	O
+took	O	O
+them	O	O
+hostage	O	O
+
+He	O	O
+has	O	O
+denied	O	O
+this	O	O
+
+We	O	O
+do	O	O
+n't	O	O
+have	O	O
+to	O	O
+believe	O	O
+him	O	O
+
+But	O	O
+we	O	O
+ca	O	O
+n't	O	O
+prove	O	O
+it	O	O
+
+It	O	O
+does	O	O
+seem	O	O
+that	O	O
+Iranians	B-LOC	B-LOC
+frequently	O	O
+make	O	O
+statements	O	O
+and	O	O
+then	O	O
+hide	O	O
+behind	O	O
+lack	O	O
+of	O	O
+proof	O	O
+
+The	O	O
+clerics	O	O
+demanded	O	O
+talks	O	O
+with	O	O
+local	O	O
+US	B-LOC	B-LOC
+commanders	O	O
+
+Cities	O	O
+such	O	O
+as	O	O
+Falluja	B-LOC	B-LOC
+received	O	O
+special	O	O
+treatment	O	O
+from	O	O
+Saddam	B-PER	B-PER
+and	O	O
+enjoyed	O	O
+a	O	O
+disproportionate	O	O
+share	O	O
+of	O	O
+the	O	O
+country	O	O
+'s	O	O
+wealth	O	O
+and	O	O
+power	O	O
+
 See	O	O
 http://www.gulf-news.com/Articles/news.asp?ArticleID=97508	O	B-MISC
 
+The	O	O
+Supreme	O	B-ORG
+Court	O	I-ORG
+announced	O	O
+its	O	O
+ruling	O	O
+today	O	O
+in	O	O
+Hamdan	B-PER	B-PER
+v.	O	O
+Rumsfeld	B-PER	B-PER
+divided	B-PER	O
+along	O	O
+idelogical	O	O
+lines	O	O
+with	O	O
+John	O	B-PER
+Roberts	O	I-PER
+abstaining	B-PER	O
+due	I-PER	O
+to	O	O
+his	O	O
+involvement	O	O
+at	O	O
+the	O	O
+D.C.	O	B-LOC
+Circuit	O	O
+level	B-LOC	O
+and	O	O
+Anthony	O	B-PER
+Kennedy	O	I-PER
+joining	B-PER	O
+the	I-PER	O
+liberals	O	O
+in	O	O
+a	O	O
+5	O	O
+3	O	O
+decision	O	O
+that	O	O
+is	O	O
+185	O	O
+pages	O	O
+long	O	O
+
+The	O	O
+actual	O	O
+vote	O	O
+is	O	O
+a	O	O
+little	O	O
+confusing	O	O
+
+I	O	O
+'ll	O	O
+post	O	O
+highlights	O	O
+from	O	O
+the	O	O
+opinion	O	O
+and	O	O
+dissents	O	O
+when	O	O
+I	O	O
+'m	O	O
+finished	O	O
+
+I	O	O
+had	O	O
+to	O	O
+go	O	O
+to	O	O
+the	O	O
+BBC	B-ORG	B-ORG
+for	O	O
+this	O	O
+report	O	O
+
+It	O	O
+'s	O	O
+just	O	O
+disappointing	O	O
+
+Which	O	O
+essentially	O	O
+sounds	O	O
+like	O	O
+he	O	O
+'s	O	O
+worried	O	O
+that	O	O
+Bill	B-PER	B-PER
+or	O	O
+Melinda	B-PER	B-PER
+are	O	O
+going	O	O
+to	O	O
+die	O	O
+soon	O	O
+
+I	O	O
+assume	O	O
+his	O	O
+actual	O	O
+reason	O	O
+is	O	O
+that	O	O
+he	O	O
+'s	O	O
+worried	O	O
+that	O	O
+Berkshire	O	B-ORG
+Hathaway	B-ORG	I-ORG
+just	I-ORG	O
+ca	I-ORG	O
+n't	O	O
+grow	O	O
+quickly	O	O
+enough	O	O
+to	O	O
+justify	O	O
+his	O	O
+usual	O	O
+charity	O	O
+policy	O	O
+
+I	O	O
+'m	O	O
+not	O	O
+sure	O	O
+how	O	O
+the	O	O
+market	O	O
+will	O	O
+react	O	O
+
+Because	O	O
+the	O	O
+10.000.000	O	O
+people	O	O
+dying	O	O
+from	O	O
+malaria	O	O
+will	O	O
+otherwise	O	O
+be	O	O
+dead	O	O
+
+i.e	O	O
+
+He	O	O
+mentions	O	O
+his	O	O
+wife	O	O
+'s	O	O
+death	O	O
+having	O	O
+an	O	O
+effect	O	O
+on	O	O
+him	O	O
+
+This	O	O
+acceptance	O	O
+of	O	O
+blatantly	O	O
+terrorist	O	O
+groups	O	O
+as	O	O
+legitimate	O	O
+freedom	O	O
+movements	O	O
+is	O	O
+a	O	O
+cancerous	O	O
+tumor	O	O
+on	O	O
+the	O	O
+United	B-ORG	B-ORG
+Nations	I-ORG	I-ORG
+and	O	O
+the	O	O
+media	O	O
+
 ...	O	O
+
+Wtf	O	O
+is	O	O
+this	O	O
+
+This	O	O
+is	O	O
+a	O	O
+terrorist	O	O
+organization	O	O
+plain	O	O
+and	O	O
+simple	O	O
+
+This	O	O
+is	O	O
+the	O	O
+organization	O	O
+that	O	O
+bombed	O	O
+our	O	O
+Marine	O	O
+barracks	O	O
+in	O	O
+1983	O	O
+took	O	O
+Americans	O	O
+hostage	B-LOC	B-LOC
+throughout	O	O
+the	O	O
+80's	O	O
+and	O	O
+now	O	O
+they	O	O
+should	O	O
+be	O	O
+considered	O	O
+a	O	O
+legitimate	O	O
+organization	O	O
+
+It	O	O
+is	O	O
+now	O	O
+threatening	O	O
+to	O	O
+pull	O	O
+out	O	O
+of	O	O
+the	O	O
+Allawi	B-PER	B-PER
+caretaker	O	O
+government	O	O
+
+Remember	O	O
+that	O	O
+the	O	O
+Occupation	O	O
+is	O	O
+emphemeral	O	O
+
+President	O	O
+Bush	B-PER	B-PER
+pinched	O	O
+a	O	O
+few	O	O
+nerves	O	O
+yesterday	O	O
+with	O	O
+his	O	O
+choice	O	O
+of	O	O
+words	O	O
+
+Which	O	O
+is	O	O
+why	O	O
+he	O	O
+did	O	O
+n't	O	O
+say	O	O
+we	O	O
+'re	O	O
+at	O	O
+war	O	O
+with	O	O
+Islamic	O	O
+people	O	O
+
+We	O	O
+'re	O	O
+at	O	O
+war	O	O
+with	O	O
+Islamic	O	O
+fascists	O	O
+
+But	O	O
+because	O	O
+we	O	O
+do	O	O
+n't	O	O
+want	O	O
+to	O	O
+sound	O	O
+hateful	O	O
+we	O	O
+must	O	O
+pretend	O	O
+everyone	O	O
+'s	O	O
+a	O	O
+possible	O	O
+suspect	O	O
+and	O	O
+make	O	O
+airline	O	O
+travel	O	O
+more	O	O
+miserable	O	O
+than	O	O
+it	O	O
+'s	O	O
+ever	O	O
+been	O	O
+
+This	O	O
+pledge	O	O
+is	O	O
+a	O	O
+new	O	O
+development	O	O
+
+Abu	O	B-PER
+Musab	O	I-PER
+al	O	I-PER
+Zarqawi	O	I-PER
+and	O	I-PER
+his	O	O
+group	O	O
+are	O	O
+said	O	O
+to	O	O
+have	O	O
+been	O	O
+bitter	O	O
+rivals	O	O
+of	O	O
+al	O	O
+Qaeda	O	B-ORG
+during	B-ORG	I-ORG
+the	O	I-ORG
+Afghan	O	O
+resistance	O	O
+days	O	B-LOC
+
+One	O	O
+witness	O	O
+at	O	O
+the	O	O
+Moutasaddiq	B-PER	B-PER
+trial	O	O
+in	O	O
+Germany	B-LOC	B-LOC
+alleged	O	O
+that	O	O
+Zarqawi	O	B-PER
+had	B-PER	O
+not	O	O
+allowed	O	O
+Monotheism	O	B-ORG
+and	O	I-ORG
+Holy	O	I-ORG
+War	O	I-ORG
+to	O	O
+share	O	O
+resources	O	O
+with	O	O
+al	O	B-ORG
+Qaeda	O	I-ORG
+in	O	I-ORG
+the	B-ORG	O
+early	O	O
+zeroes	O	O
+of	O	O
+the	O	O
+21st	O	O
+century	O	O
+
+This	O	O
+consolidation	O	O
+is	O	O
+obviously	O	O
+a	O	O
+result	O	O
+of	O	O
+Bush	B-PER	B-PER
+'s	O	I-PER
+aggressive	O	O
+invasion	O	O
+of	O	O
+Iraq	B-LOC	B-LOC
+and	O	O
+of	O	O
+the	O	O
+botching	O	O
+of	O	O
+the	O	O
+aftermath	O	O
+
+It	O	O
+is	O	O
+a	O	O
+setback	O	O
+for	O	O
+the	O	O
+war	O	O
+on	O	O
+terror	O	O
+
+They	O	O
+also	O	O
+had	O	O
+a	O	O
+special	O	O
+connection	O	O
+to	O	O
+some	O	O
+extremists	O	O
+in	O	O
+Jordan	B-LOC	B-LOC
+and	O	O
+Germany	B-LOC	B-LOC
+
+These	O	O
+have	O	O
+been	O	O
+sighted	O	O
+among	O	O
+Iraqi	B-LOC	B-LOC
+crowds	O	O
+on	O	O
+Haifa	B-LOC	B-LOC
+Street	I-LOC	I-LOC
+in	O	O
+Baghdad	B-LOC	B-LOC
+and	O	O
+in	O	O
+Samarra	B-LOC	B-LOC
+
+So	O	O
+now	O	O
+there	O	O
+are	O	O
+hundreds	O	O
+of	O	O
+al	O	B-ORG
+Qaeda	O	I-ORG
+members	O	I-ORG
+in	O	O
+Iraq	O	O
+where	B-LOC	B-LOC
+there	O	O
+had	O	O
+been	O	O
+none	O	O
+before	O	O
+
+The	O	O
+September	O	O
+11	O	O
+Panel	O	O
+will	O	O
+issue	O	O
+its	O	O
+findings	O	O
+on	O	O
+Thursday	O	O
+
+It	O	O
+notes	O	O
+10	O	O
+points	O	O
+at	O	O
+which	O	O
+the	O	O
+US	B-LOC	B-ORG
+made	O	O
+key	O	O
+mistakes	O	O
+that	O	O
+might	O	O
+have	O	O
+stopped	O	O
+Bin	O	B-PER
+Laden	O	I-PER
+'s	B-PER	I-PER
+plot	O	O
+
+Four	O	O
+of	O	O
+these	O	O
+were	O	O
+under	O	O
+Clinton	B-PER	B-PER
+and	O	O
+6	O	O
+under	O	O
+Bush	B-PER	B-PER
+
+Of	O	O
+course	O	O
+Bush	B-PER	B-PER
+would	O	O
+have	O	O
+tried	O	O
+to	O	O
+stop	O	O
+9/11	O	B-MISC
+if	O	O
+he	O	O
+had	O	O
+known	O	O
+it	O	O
+was	O	O
+coming	O	O
+
+We	O	O
+now	O	O
+know	O	O
+that	O	O
+Bush	B-PER	B-PER
+and	O	O
+his	O	O
+administration	O	O
+came	O	O
+into	O	O
+office	O	O
+obsessed	O	O
+with	O	O
+Iraq	B-LOC	B-LOC
+
+On	O	O
+what	O	O
+evidence	O	O
+
+Bush	B-PER	B-PER
+did	O	O
+not	O	O
+have	O	O
+his	O	O
+eye	O	O
+on	O	O
+the	O	O
+ball	O	O
+
+They	O	O
+were	O	O
+playing	O	O
+Captain	O	O
+Ahab	B-PER	B-PER
+to	O	O
+Saddam	B-PER	B-PER
+'s	O	I-PER
+great	O	O
+white	O	O
+whale	O	O
+
+Imperial	B-PER	B-MISC
+Hubris	I-PER	I-MISC
+makes	O	O
+the	O	O
+case	O	O
+that	O	O
+lots	O	O
+of	O	O
+people	O	O
+in	O	O
+the	O	O
+CIA	B-ORG	B-ORG
+and	O	O
+counter-terrorism	O	O
+divisions	O	O
+elsewhere	O	O
+in	O	O
+the	O	O
+US	O	B-LOC
+government	B-LOC	O
+knew	O	O
+all	O	O
+about	O	O
+Bin	O	B-PER
+Laden	B-PER	I-PER
+and	O	O
+the	O	O
+threat	O	O
+he	O	O
+posed	O	O
+
+They	O	O
+were	O	O
+from	O	O
+all	O	O
+accounts	O	O
+marginalized	O	O
+and	O	O
+not	O	O
+listened	O	O
+to	O	O
+
+I	O	O
+presume	O	O
+you	O	O
+need	O	O
+the	O	O
+Pakistan	B-LOC	B-LOC
+base	O	O
+for	O	O
+rescue	O	O
+operations	O	O
+in	O	O
+case	O	O
+anything	O	O
+went	O	O
+wrong	O	O
+
+You	O	O
+also	O	O
+need	O	O
+Pakistani	B-LOC	B-LOC
+air	O	O
+space	O	O
+
+The	O	O
+plan	O	O
+was	O	O
+all	O	O
+set	O	O
+and	O	O
+could	O	O
+have	O	O
+succeeded	O	O
+
+Musharraf	B-PER	B-PER
+told	O	O
+Clinton	B-PER	B-PER
+he	O	O
+could	O	O
+n't	O	O
+use	O	O
+Pakistani	B-LOC	B-LOC
+soil	O	O
+or	O	O
+air	O	O
+space	O	O
+to	O	O
+send	O	O
+the	O	O
+team	O	O
+in	O	O
+against	O	O
+Bin	O	B-PER
+Laden	O	I-PER
+
+It	O	O
+should	O	O
+be	O	O
+easily	O	O
+googled	O	O
+
+The	O	O
+gods	O	O
+were	O	O
+n't	O	O
+with	O	O
+us	O	O
+on	O	O
+that	O	O
+one	O	O
 
 
