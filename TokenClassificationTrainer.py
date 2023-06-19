@@ -259,11 +259,6 @@ if __name__ == "__main__":
         for sent, preds, labels in zip(tokenized_datasets["test"]["tokens"], true_predictions, true_labels):
             sent = [word for word in sent if not punct_regex.match(word)]
             if len(sent) != len(preds) or len(sent) != len(labels):
-                # Remove punctuation from sentence
-                print("Error: Lengths do not match")
-                print(sent)
-                print(preds)
-                print(labels)
                 continue
             for word, pred, label in zip(sent, preds, labels):
                 msg = f"{word}\t{pred}\t{label}\n"
